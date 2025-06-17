@@ -43,6 +43,65 @@
 
 	};
 
+	ref_clk: ref-clk {
+		compatible = "fixed-clock";
+
+		clock-frequency = <1000000000>; /* 1 GHz */
+		#clock-cells = <0>;
+
+		status = "okay";
+	};
+
+	pll0: pll@80020100 {
+		compatible = "tenstorrent,bh-pll";
+
+		reg = <0x80020100 0x100>;
+		clocks = <&ref_clk>;
+		#clock-cells = <0>;
+
+		status = "okay";
+	};
+
+	pll1: pll@80020200 {
+		compatible = "tenstorrent,bh-pll";
+
+		reg = <0x80020200 0x100>;
+		clocks = <&ref_clk>;
+		#clock-cells = <0>;
+		
+		status = "okay";
+	};
+
+	pll2: pll@80020300 {
+		compatible = "tenstorrent,bh-pll";
+
+		reg = <0x80020300 0x100>;
+		clocks = <&ref_clk>;
+		#clock-cells = <0>;
+
+		status = "okay";
+	};
+
+	pll3: pll@80020400 {
+		compatible = "tenstorrent,bh-pll";
+
+		reg = <0x80020400 0x100>;
+		clocks = <&ref_clk>;
+		#clock-cells = <0>;
+
+		status = "okay";
+	};
+
+	pll4: pll@80020500 {
+		compatible = "tenstorrent,bh-pll";
+
+		reg = <0x80020500 0x100>;
+		clocks = <&ref_clk>;
+		#clock-cells = <0>;
+
+		status = "okay";
+	};
+
 	sysclk: system-clock {
 		compatible = "fixed-clock";
 		clock-frequency = <500000000>;
