@@ -7,11 +7,14 @@
 #ifndef ZEPHYR_INCLUDE_DRIVERS_PLL_H_
 #define ZEPHYR_INCLUDE_DRIVERS_PLL_H_
 
+#include <zephyr/device.h>
+#include <stdint.h>
+
 typedef enum {
 	CLOCK_CONTROL_TT_BH_CLOCK_AICLK,
 	CLOCK_CONTROL_TT_BH_CLOCK_ARCCLK,
 	CLOCK_CONTROL_TT_BH_CLOCK_AXICLK,
-    CLOCK_CONTROL_TT_BH_CLOCK_APBCLK,
+	CLOCK_CONTROL_TT_BH_CLOCK_APBCLK,
 	CLOCK_CONTROL_TT_BH_CLOCK_L2CPUCLK_0,
 	CLOCK_CONTROL_TT_BH_CLOCK_L2CPUCLK_1,
 	CLOCK_CONTROL_TT_BH_CLOCK_L2CPUCLK_2,
@@ -20,7 +23,7 @@ typedef enum {
 } clock_control_tt_bh_clock;
 
 typedef enum {
-    CLOCK_CONTROL_TT_BH_CONFIG_BYPASS_ALL
-} clock_control_tt_bh_config;
+	CLOCK_CONTROL_TT_BH_CONFIG_BYPASS_ALL
+} clock_control_tt_bh_clock_config;
 
 #endif /* ZEPHYR_INCLUDE_DRIVERS_PLL_H_ */

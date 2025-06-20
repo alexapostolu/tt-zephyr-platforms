@@ -17,7 +17,6 @@
 #include "noc.h"
 #include "noc_init.h"
 #include "pcie.h"
-#include "pll.h"
 #include "pvt.h"
 #include "read_only_table.h"
 #include "reg.h"
@@ -39,6 +38,11 @@
 #include <zephyr/init.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/kernel.h>
+
+#include <zephyr/device.h>
+#include <zephyr/devicetree.h>
+#include <zephyr/drivers/clock_control.h>
+#include <zephyr/drivers/pll/pll_tt_bh.h>
 
 LOG_MODULE_REGISTER(InitHW, CONFIG_TT_APP_LOG_LEVEL);
 
@@ -191,7 +195,7 @@ static int CheckGddrHwTest(void)
 	return any_error;
 }
 
-static int InitMrisc(void)
+static int InitMrisc(const struct device *const pll_dev)
 {
 	static const char kMriscFwCfgTag[TT_BOOT_FS_IMAGE_TAG_SIZE] = "memfwcfg";
 	static const char kMriscFwTag[TT_BOOT_FS_IMAGE_TAG_SIZE] = "memfw";
@@ -237,7 +241,9 @@ static int InitMrisc(void)
 		gddr_speed = MIN_GDDR_SPEED;
 	}
 
-	if (SetGddrMemClk(gddr_speed / GDDR_SPEED_TO_MEMCLK_RATIO)) {
+	if (clock_control_set_rate(pll_dev,
+		(clock_control_subsys_t)CLOCK_CONTROL_TT_BH_CLOCK_GDDRMEMCLK,
+		(clock_control_subsys_rate_t)(gddr_speed / GDDR_SPEED_TO_MEMCLK_RATIO))) {
 		LOG_ERR("Failed to set GDDR memory clock to requested: %d Mbps\n", gddr_speed);
 		return -EIO;
 	}
@@ -416,7 +422,6 @@ static int InitHW(void)
 	boot_status0.val = ReadReg(STATUS_BOOT_STATUS0_REG_ADDR);
 	boot_status0.f.hw_init_status = kHwInitStarted;
 	WriteReg(STATUS_BOOT_STATUS0_REG_ADDR, boot_status0.val);
-
 	SetPostCode(POST_CODE_SRC_CMFW, POST_CODE_ARC_INIT_STEP1);
 
 	/* Load FW config, Read Only and Flash Info tables from SPI filesystem */
@@ -438,13 +443,16 @@ static int InitHW(void)
 	}
 
 	SetPostCode(POST_CODE_SRC_CMFW, POST_CODE_ARC_INIT_STEP3);
+
+	/* get and inits the pll device */
+	static const struct device *const pll_dev = DEVICE_DT_GET(DT_NODELABEL(pll));
+
 	/* Put all PLLs back into bypass, since tile resets need to be deasserted at low speed */
-	PLLAllBypass();
+	clock_control_configure(pll_dev, NULL, (uintptr_t)CLOCK_CONTROL_TT_BH_CONFIG_BYPASS_ALL);
 	DeassertTileResets();
 
 	SetPostCode(POST_CODE_SRC_CMFW, POST_CODE_ARC_INIT_STEP4);
 	/* Init clocks to faster (but safe) levels */
-	PLLInit();
 
 	SetPostCode(POST_CODE_SRC_CMFW, POST_CODE_ARC_INIT_STEP5);
 
@@ -465,11 +473,12 @@ static int InitHW(void)
 	SetPostCode(POST_CODE_SRC_CMFW, POST_CODE_ARC_INIT_STEP7);
 	if (!IS_ENABLED(CONFIG_TT_SMC_RECOVERY)) {
 		/* Go back to PLL bypass, since RISCV resets need to be deasserted at low speed */
-		PLLAllBypass();
+		clock_control_configure(pll_dev, NULL,
+			(uintptr_t)CLOCK_CONTROL_TT_BH_CONFIG_BYPASS_ALL);
 		/* Deassert RISC reset from reset_unit */
 		DeassertRiscvResets();
-		PLLInit();
 		/* Initialize some AICLK tracking variables */
+
 		InitAiclkPPM();
 	}
 
@@ -513,7 +522,7 @@ static int InitHW(void)
 	bool init_errors = false;
 	SetPostCode(POST_CODE_SRC_CMFW, POST_CODE_ARC_INIT_STEP9);
 	if (!IS_ENABLED(CONFIG_TT_SMC_RECOVERY)) {
-		if (InitMrisc()) {
+		if (InitMrisc(pll_dev)) {
 			LOG_ERR("Failed to initialize GDDR.\n");
 			init_errors = true;
 		}

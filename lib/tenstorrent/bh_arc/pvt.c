@@ -14,10 +14,16 @@
 
 #include "timer.h"
 #include "reg.h"
-#include "pll.h"
 #include "timer.h"
 #include "gpio.h"
 #include "telemetry.h"
+
+#include <zephyr/device.h>
+#include <zephyr/devicetree.h>
+#include <zephyr/drivers/clock_control.h>
+#include <zephyr/drivers/pll/pll_tt_bh.h>
+
+static const struct device *const pll_dev = DEVICE_DT_GET(DT_NODELABEL(pll));
 
 #define SDIF_DONE_TIMEOUT_MS 10
 
@@ -347,7 +353,10 @@ static inline void PVTInterruptConfig(void)
 /* target a PVT clock of 5 MHz */
 static inline void PVTClkConfig(void)
 {
-	uint32_t apb_clk = GetAPBCLK();
+	uint32_t apb_clk = 0;
+
+	clock_control_set_rate(pll_dev, (clock_control_subsys_t)CLOCK_CONTROL_TT_BH_CLOCK_APBCLK,
+	(clock_control_subsys_rate_t)apb_clk);
 	PVT_CNTL_CLK_SYNTH_reg_u clk_synt;
 
 	clk_synt.val = PVT_CNTL_CLK_SYNTH_REG_DEFAULT;

@@ -9,7 +9,6 @@
 #include "functional_efuse.h"
 #include "fw_table.h"
 #include "harvesting.h"
-#include "pll.h"
 #include "pvt.h"
 #include "read_only_table.h"
 #include "reg.h"
@@ -27,6 +26,11 @@
 #include <tenstorrent/post_code.h>
 #include <zephyr/logging/log.h>
 
+#include <zephyr/device.h>
+#include <zephyr/devicetree.h>
+#include <zephyr/drivers/clock_control.h>
+#include <zephyr/drivers/pll/pll_tt_bh.h>
+
 LOG_MODULE_REGISTER(telemetry, CONFIG_TT_APP_LOG_LEVEL);
 
 struct telemetry_entry {
@@ -42,72 +46,80 @@ struct telemetry_table {
 };
 
 /* Global variables */
+
+static const struct device *const pll_dev = DEVICE_DT_GET(DT_NODELABEL(pll));
+
 static struct telemetry_table telemetry_table = {
-	.tag_table = {
-		[0] = {TAG_BOARD_ID_HIGH, TELEM_OFFSET(TAG_BOARD_ID_HIGH)},
-		[1] = {TAG_BOARD_ID_LOW, TELEM_OFFSET(TAG_BOARD_ID_LOW)},
-		[3] = {TAG_HARVESTING_STATE, TELEM_OFFSET(TAG_HARVESTING_STATE)},
-		[4] = {TAG_UPDATE_TELEM_SPEED, TELEM_OFFSET(TAG_UPDATE_TELEM_SPEED)},
-		[5] = {TAG_VCORE, TELEM_OFFSET(TAG_VCORE)},
-		[6] = {TAG_TDP, TELEM_OFFSET(TAG_TDP)},
-		[7] = {TAG_TDC, TELEM_OFFSET(TAG_TDC)},
-		[8] = {TAG_VDD_LIMITS, TELEM_OFFSET(TAG_VDD_LIMITS)},
-		[9] = {TAG_THM_LIMITS, TELEM_OFFSET(TAG_THM_LIMITS)},
-		[10] = {TAG_ASIC_TEMPERATURE, TELEM_OFFSET(TAG_ASIC_TEMPERATURE)},
-		[11] = {TAG_VREG_TEMPERATURE, TELEM_OFFSET(TAG_VREG_TEMPERATURE)},
-		[12] = {TAG_BOARD_TEMPERATURE, TELEM_OFFSET(TAG_BOARD_TEMPERATURE)},
-		[13] = {TAG_AICLK, TELEM_OFFSET(TAG_AICLK)},
-		[14] = {TAG_AXICLK, TELEM_OFFSET(TAG_AXICLK)},
-		[15] = {TAG_ARCCLK, TELEM_OFFSET(TAG_ARCCLK)},
-		[16] = {TAG_L2CPUCLK0, TELEM_OFFSET(TAG_L2CPUCLK0)},
-		[17] = {TAG_L2CPUCLK1, TELEM_OFFSET(TAG_L2CPUCLK1)},
-		[18] = {TAG_L2CPUCLK2, TELEM_OFFSET(TAG_L2CPUCLK2)},
-		[19] = {TAG_L2CPUCLK3, TELEM_OFFSET(TAG_L2CPUCLK3)},
-		[20] = {TAG_ETH_LIVE_STATUS, TELEM_OFFSET(TAG_ETH_LIVE_STATUS)},
-		[21] = {TAG_GDDR_STATUS, TELEM_OFFSET(TAG_GDDR_STATUS)},
-		[22] = {TAG_GDDR_SPEED, TELEM_OFFSET(TAG_GDDR_SPEED)},
-		[23] = {TAG_ETH_FW_VERSION, TELEM_OFFSET(TAG_ETH_FW_VERSION)},
-		[24] = {TAG_GDDR_FW_VERSION, TELEM_OFFSET(TAG_GDDR_FW_VERSION)},
-		[25] = {TAG_DM_APP_FW_VERSION, TELEM_OFFSET(TAG_DM_APP_FW_VERSION)},
-		[26] = {TAG_DM_BL_FW_VERSION, TELEM_OFFSET(TAG_DM_BL_FW_VERSION)},
-		[27] = {TAG_FLASH_BUNDLE_VERSION, TELEM_OFFSET(TAG_FLASH_BUNDLE_VERSION)},
-		[28] = {TAG_CM_FW_VERSION, TELEM_OFFSET(TAG_CM_FW_VERSION)},
-		[29] = {TAG_L2CPU_FW_VERSION, TELEM_OFFSET(TAG_L2CPU_FW_VERSION)},
-		[30] = {TAG_FAN_SPEED, TELEM_OFFSET(TAG_FAN_SPEED)},
-		[31] = {TAG_TIMER_HEARTBEAT, TELEM_OFFSET(TAG_TIMER_HEARTBEAT)},
-		[32] = {TAG_ENABLED_TENSIX_COL, TELEM_OFFSET(TAG_ENABLED_TENSIX_COL)},
-		[33] = {TAG_ENABLED_ETH, TELEM_OFFSET(TAG_ENABLED_ETH)},
-		[34] = {TAG_ENABLED_GDDR, TELEM_OFFSET(TAG_ENABLED_GDDR)},
-		[35] = {TAG_ENABLED_L2CPU, TELEM_OFFSET(TAG_ENABLED_L2CPU)},
-		[36] = {TAG_PCIE_USAGE, TELEM_OFFSET(TAG_PCIE_USAGE)},
-		[37] = {TAG_NOC_TRANSLATION, TELEM_OFFSET(TAG_NOC_TRANSLATION)},
-		[38] = {TAG_FAN_RPM, TELEM_OFFSET(TAG_FAN_RPM)},
-		[39] = {TAG_GDDR_0_1_TEMP, TELEM_OFFSET(TAG_GDDR_0_1_TEMP)},
-		[40] = {TAG_GDDR_2_3_TEMP, TELEM_OFFSET(TAG_GDDR_2_3_TEMP)},
-		[41] = {TAG_GDDR_4_5_TEMP, TELEM_OFFSET(TAG_GDDR_4_5_TEMP)},
-		[42] = {TAG_GDDR_6_7_TEMP, TELEM_OFFSET(TAG_GDDR_6_7_TEMP)},
-		[43] = {TAG_GDDR_0_1_CORR_ERRS, TELEM_OFFSET(TAG_GDDR_0_1_CORR_ERRS)},
-		[44] = {TAG_GDDR_2_3_CORR_ERRS, TELEM_OFFSET(TAG_GDDR_2_3_CORR_ERRS)},
-		[45] = {TAG_GDDR_4_5_CORR_ERRS, TELEM_OFFSET(TAG_GDDR_4_5_CORR_ERRS)},
-		[46] = {TAG_GDDR_6_7_CORR_ERRS, TELEM_OFFSET(TAG_GDDR_6_7_CORR_ERRS)},
-		[47] = {TAG_GDDR_UNCORR_ERRS, TELEM_OFFSET(TAG_GDDR_UNCORR_ERRS)},
-		[48] = {TAG_MAX_GDDR_TEMP, TELEM_OFFSET(TAG_MAX_GDDR_TEMP)},
-		[49] = {TAG_ASIC_LOCATION, TELEM_OFFSET(TAG_ASIC_LOCATION)},
-		[50] = {TAG_BOARD_POWER_LIMIT, TELEM_OFFSET(TAG_BOARD_POWER_LIMIT)},
-		[51] = {TAG_INPUT_POWER, TELEM_OFFSET(TAG_INPUT_POWER)},
-		[52] = {TAG_ASIC_ID_HIGH, TELEM_OFFSET(TAG_ASIC_ID_HIGH)},
-		[53] = {TAG_ASIC_ID_LOW, TELEM_OFFSET(TAG_ASIC_ID_LOW)},
-		[54] = {TAG_THERM_TRIP_COUNT, TELEM_OFFSET(TAG_THERM_TRIP_COUNT)},
-		[55] = {TAG_TELEM_ENUM_COUNT, TELEM_OFFSET(TAG_TELEM_ENUM_COUNT)},
-	},
+		.tag_table = {
+				[0] = {TAG_BOARD_ID_HIGH, TELEM_OFFSET(TAG_BOARD_ID_HIGH)},
+				[1] = {TAG_BOARD_ID_LOW, TELEM_OFFSET(TAG_BOARD_ID_LOW)},
+				[3] = {TAG_HARVESTING_STATE, TELEM_OFFSET(TAG_HARVESTING_STATE)},
+				[4] = {TAG_UPDATE_TELEM_SPEED,
+				       TELEM_OFFSET(TAG_UPDATE_TELEM_SPEED)},
+				[5] = {TAG_VCORE, TELEM_OFFSET(TAG_VCORE)},
+				[6] = {TAG_TDP, TELEM_OFFSET(TAG_TDP)},
+				[7] = {TAG_TDC, TELEM_OFFSET(TAG_TDC)},
+				[8] = {TAG_VDD_LIMITS, TELEM_OFFSET(TAG_VDD_LIMITS)},
+				[9] = {TAG_THM_LIMITS, TELEM_OFFSET(TAG_THM_LIMITS)},
+				[10] = {TAG_ASIC_TEMPERATURE, TELEM_OFFSET(TAG_ASIC_TEMPERATURE)},
+				[11] = {TAG_VREG_TEMPERATURE, TELEM_OFFSET(TAG_VREG_TEMPERATURE)},
+				[12] = {TAG_BOARD_TEMPERATURE, TELEM_OFFSET(TAG_BOARD_TEMPERATURE)},
+				[13] = {TAG_AICLK, TELEM_OFFSET(TAG_AICLK)},
+				[14] = {TAG_AXICLK, TELEM_OFFSET(TAG_AXICLK)},
+				[15] = {TAG_ARCCLK, TELEM_OFFSET(TAG_ARCCLK)},
+				[16] = {TAG_L2CPUCLK0, TELEM_OFFSET(TAG_L2CPUCLK0)},
+				[17] = {TAG_L2CPUCLK1, TELEM_OFFSET(TAG_L2CPUCLK1)},
+				[18] = {TAG_L2CPUCLK2, TELEM_OFFSET(TAG_L2CPUCLK2)},
+				[19] = {TAG_L2CPUCLK3, TELEM_OFFSET(TAG_L2CPUCLK3)},
+				[20] = {TAG_ETH_LIVE_STATUS, TELEM_OFFSET(TAG_ETH_LIVE_STATUS)},
+				[21] = {TAG_GDDR_STATUS, TELEM_OFFSET(TAG_GDDR_STATUS)},
+				[22] = {TAG_GDDR_SPEED, TELEM_OFFSET(TAG_GDDR_SPEED)},
+				[23] = {TAG_ETH_FW_VERSION, TELEM_OFFSET(TAG_ETH_FW_VERSION)},
+				[24] = {TAG_GDDR_FW_VERSION, TELEM_OFFSET(TAG_GDDR_FW_VERSION)},
+				[25] = {TAG_DM_APP_FW_VERSION, TELEM_OFFSET(TAG_DM_APP_FW_VERSION)},
+				[26] = {TAG_DM_BL_FW_VERSION, TELEM_OFFSET(TAG_DM_BL_FW_VERSION)},
+				[27] = {TAG_FLASH_BUNDLE_VERSION,
+					TELEM_OFFSET(TAG_FLASH_BUNDLE_VERSION)},
+				[28] = {TAG_CM_FW_VERSION, TELEM_OFFSET(TAG_CM_FW_VERSION)},
+				[29] = {TAG_L2CPU_FW_VERSION, TELEM_OFFSET(TAG_L2CPU_FW_VERSION)},
+				[30] = {TAG_FAN_SPEED, TELEM_OFFSET(TAG_FAN_SPEED)},
+				[31] = {TAG_TIMER_HEARTBEAT, TELEM_OFFSET(TAG_TIMER_HEARTBEAT)},
+				[32] = {TAG_ENABLED_TENSIX_COL,
+					TELEM_OFFSET(TAG_ENABLED_TENSIX_COL)},
+				[33] = {TAG_ENABLED_ETH, TELEM_OFFSET(TAG_ENABLED_ETH)},
+				[34] = {TAG_ENABLED_GDDR, TELEM_OFFSET(TAG_ENABLED_GDDR)},
+				[35] = {TAG_ENABLED_L2CPU, TELEM_OFFSET(TAG_ENABLED_L2CPU)},
+				[36] = {TAG_PCIE_USAGE, TELEM_OFFSET(TAG_PCIE_USAGE)},
+				[37] = {TAG_NOC_TRANSLATION, TELEM_OFFSET(TAG_NOC_TRANSLATION)},
+				[38] = {TAG_FAN_RPM, TELEM_OFFSET(TAG_FAN_RPM)},
+				[39] = {TAG_GDDR_0_1_TEMP, TELEM_OFFSET(TAG_GDDR_0_1_TEMP)},
+				[40] = {TAG_GDDR_2_3_TEMP, TELEM_OFFSET(TAG_GDDR_2_3_TEMP)},
+				[41] = {TAG_GDDR_4_5_TEMP, TELEM_OFFSET(TAG_GDDR_4_5_TEMP)},
+				[42] = {TAG_GDDR_6_7_TEMP, TELEM_OFFSET(TAG_GDDR_6_7_TEMP)},
+				[43] = {TAG_GDDR_0_1_CORR_ERRS,
+					TELEM_OFFSET(TAG_GDDR_0_1_CORR_ERRS)},
+				[44] = {TAG_GDDR_2_3_CORR_ERRS,
+					TELEM_OFFSET(TAG_GDDR_2_3_CORR_ERRS)},
+				[45] = {TAG_GDDR_4_5_CORR_ERRS,
+					TELEM_OFFSET(TAG_GDDR_4_5_CORR_ERRS)},
+				[46] = {TAG_GDDR_6_7_CORR_ERRS,
+					TELEM_OFFSET(TAG_GDDR_6_7_CORR_ERRS)},
+				[47] = {TAG_GDDR_UNCORR_ERRS, TELEM_OFFSET(TAG_GDDR_UNCORR_ERRS)},
+				[48] = {TAG_MAX_GDDR_TEMP, TELEM_OFFSET(TAG_MAX_GDDR_TEMP)},
+				[49] = {TAG_ASIC_LOCATION, TELEM_OFFSET(TAG_ASIC_LOCATION)},
+				[50] = {TAG_BOARD_POWER_LIMIT, TELEM_OFFSET(TAG_BOARD_POWER_LIMIT)},
+				[51] = {TAG_INPUT_POWER, TELEM_OFFSET(TAG_INPUT_POWER)},
+				[52] = {TAG_ASIC_ID_HIGH, TELEM_OFFSET(TAG_ASIC_ID_HIGH)},
+				[53] = {TAG_ASIC_ID_LOW, TELEM_OFFSET(TAG_ASIC_ID_LOW)},
+				[54] = {TAG_THERM_TRIP_COUNT, TELEM_OFFSET(TAG_THERM_TRIP_COUNT)},
+				[55] = {TAG_TELEM_ENUM_COUNT, TELEM_OFFSET(TAG_TELEM_ENUM_COUNT)},
+			},
 };
 static uint32_t *telemetry = &telemetry_table.telemetry[0];
 
 static struct k_timer telem_update_timer;
 static struct k_work telem_update_worker;
 static int telem_update_interval = 100;
-
-
 
 uint32_t ConvertFloatToTelemetry(float value)
 {
@@ -169,8 +181,8 @@ static void UpdateGddrTelemetry(void)
 			 * [15] - Error GDDR 7
 			 */
 			telemetry[TAG_GDDR_STATUS] |=
-						  (gddr_telemetry.training_complete << (i * 2)) |
-						  (gddr_telemetry.gddr_error << (i * 2 + 1));
+				(gddr_telemetry.training_complete << (i * 2)) |
+				(gddr_telemetry.gddr_error << (i * 2 + 1));
 
 			/* DDR_x_y_TEMP:
 			 * [31:24] GDDR y top
@@ -227,10 +239,10 @@ int GetMaxGDDRTemp(void)
 
 static void write_static_telemetry(uint32_t app_version)
 {
-	telemetry_table.version = TELEMETRY_VERSION;    /* v0.1.0 - Only update when redefining the
-							 * meaning of an existing tag
-							 */
-	telemetry_table.entry_count = TAG_COUNT; /* Runtime count of telemetry entries */
+	telemetry_table.version = TELEMETRY_VERSION; /* v0.1.0 - Only update when redefining the
+						      * meaning of an existing tag
+						      */
+	telemetry_table.entry_count = TAG_COUNT;     /* Runtime count of telemetry entries */
 	telemetry[TAG_TELEM_ENUM_COUNT] = TAG_COUNT; /* Count of telemetry tags */
 
 	/* Get the static values */
@@ -255,8 +267,8 @@ static void write_static_telemetry(uint32_t app_version)
 				     "writing static telemetry");
 		} else {
 			telemetry[TAG_GDDR_FW_VERSION] =
-					(gddr_telemetry.mrisc_fw_version_major << 16) |
-					 gddr_telemetry.mrisc_fw_version_minor;
+				(gddr_telemetry.mrisc_fw_version_major << 16) |
+				gddr_telemetry.mrisc_fw_version_minor;
 		}
 	}
 	/* DM_APP_FW_VERSION and DM_BL_FW_VERSION assumes zero-init, it might be
@@ -272,8 +284,7 @@ static void write_static_telemetry(uint32_t app_version)
 	telemetry[TAG_ENABLED_GDDR] = tile_enable.gddr_enabled;
 	telemetry[TAG_ENABLED_L2CPU] = tile_enable.l2cpu_enabled;
 	telemetry[TAG_PCIE_USAGE] =
-		((tile_enable.pcie_usage[1] & 0x3) << 2) |
-		(tile_enable.pcie_usage[0] & 0x3);
+		((tile_enable.pcie_usage[1] & 0x3) << 2) | (tile_enable.pcie_usage[0] & 0x3);
 	/* telemetry[TAG_NOC_TRANSLATION] assumes zero-init, see also
 	 * UpdateTelemetryNocTranslation.
 	 */
@@ -292,33 +303,61 @@ static void update_telemetry(void)
 	telemetry[TAG_VCORE] =
 		telemetry_internal_data
 			.vcore_voltage; /* reported in mV, will be truncated to uint32_t */
-	telemetry[TAG_TDP] = telemetry_internal_data
-				 .vcore_power; /* reported in W, will be truncated to uint32_t */
-	telemetry[TAG_TDC] = telemetry_internal_data
-				 .vcore_current; /* reported in A, will be truncated to uint32_t */
-	telemetry[TAG_VDD_LIMITS] = 0x00000000;      /* VDD limits - Not Available yet */
-	telemetry[TAG_THM_LIMITS] = 0x00000000;      /* THM limits - Not Available yet */
+	telemetry[TAG_TDP] =
+		telemetry_internal_data
+			.vcore_power; /* reported in W, will be truncated to uint32_t */
+	telemetry[TAG_TDC] =
+		telemetry_internal_data
+			.vcore_current;         /* reported in A, will be truncated to uint32_t */
+	telemetry[TAG_VDD_LIMITS] = 0x00000000; /* VDD limits - Not Available yet */
+	telemetry[TAG_THM_LIMITS] = 0x00000000; /* THM limits - Not Available yet */
 	telemetry[TAG_ASIC_TEMPERATURE] = ConvertFloatToTelemetry(
 		telemetry_internal_data.asic_temperature); /* ASIC temperature - reported in
 							    * signed int 16.16 format
 							    */
-	telemetry[TAG_VREG_TEMPERATURE] = 0x000000;  /* VREG temperature - need I2C line */
-	telemetry[TAG_BOARD_TEMPERATURE] = 0x000000; /* Board temperature - need I2C line */
-	telemetry[TAG_AICLK] = GetAICLK(); /* first 16 bits - MAX ASIC FREQ (Not Available yet),
-					    * lower 16 bits - current AICLK
-					    */
-	telemetry[TAG_AXICLK] = GetAXICLK();
-	telemetry[TAG_ARCCLK] = GetARCCLK();
-	telemetry[TAG_L2CPUCLK0] = GetL2CPUCLK(0);
-	telemetry[TAG_L2CPUCLK1] = GetL2CPUCLK(1);
-	telemetry[TAG_L2CPUCLK2] = GetL2CPUCLK(2);
-	telemetry[TAG_L2CPUCLK3] = GetL2CPUCLK(3);
-	telemetry[TAG_ETH_LIVE_STATUS] =
-		0x00000000; /* ETH live status lower 16 bits: heartbeat status, upper 16 bits:
-			     * retrain_status - Not Available yet
-			     */
-	telemetry[TAG_FAN_SPEED] = GetFanSpeed(); /* Target fan speed - reported in percentage */
-	telemetry[TAG_FAN_RPM] = GetFanRPM();     /* Actual fan RPM */
+	telemetry[TAG_VREG_TEMPERATURE] = 0x000000;        /* VREG temperature - need I2C line */
+	telemetry[TAG_BOARD_TEMPERATURE] = 0x000000;       /* Board temperature - need I2C line */
+	clock_control_get_rate(
+		pll_dev, (clock_control_subsys_t)CLOCK_CONTROL_TT_BH_CLOCK_AICLK,
+		&telemetry[TAG_AICLK]); /* first 16 bits - MAX ASIC FREQ (Not Available yet),
+					 * lower 16 bits - current AICLK
+					 */
+	clock_control_get_rate(
+		pll_dev, (clock_control_subsys_t)CLOCK_CONTROL_TT_BH_CLOCK_AXICLK,
+		&telemetry[TAG_AXICLK]); /* first 16 bits - MAX AXI FREQ (Not Available yet),
+					  * lower 16 bits - current AXICLK
+					  */
+	clock_control_get_rate(
+		pll_dev, (clock_control_subsys_t)CLOCK_CONTROL_TT_BH_CLOCK_ARCCLK,
+		&telemetry[TAG_ARCCLK]); /* first 16 bits - MAX ARC FREQ (Not Available yet),
+					  * lower 16 bits - current ARCCLK
+					  */
+	clock_control_get_rate(
+		pll_dev, (clock_control_subsys_t)CLOCK_CONTROL_TT_BH_CLOCK_L2CPUCLK_0,
+		&telemetry[TAG_L2CPUCLK0]); /* first 16 bits - MAX L2CPUCLK0 FREQ (Not Available
+					     * yet), lower 16 bits - current L2CPUCLK0
+					     */
+	clock_control_get_rate(
+		pll_dev, (clock_control_subsys_t)CLOCK_CONTROL_TT_BH_CLOCK_L2CPUCLK_1,
+		&telemetry[TAG_L2CPUCLK1]); /* first 16 bits - MAX L2CPUCLK1 FREQ (Not Available
+					     * yet), lower 16 bits - current L2CPUCLK1
+					     */
+	clock_control_get_rate(
+		pll_dev, (clock_control_subsys_t)CLOCK_CONTROL_TT_BH_CLOCK_L2CPUCLK_2,
+		&telemetry[TAG_L2CPUCLK2]); /* first 16 bits - MAX L2CPUCLK2 FREQ (Not Available
+					     * yet), lower 16 bits - current L2CPUCLK2
+					     */
+	clock_control_get_rate(
+		pll_dev, (clock_control_subsys_t)CLOCK_CONTROL_TT_BH_CLOCK_L2CPUCLK_3,
+		&telemetry[TAG_L2CPUCLK3]); /* first 16 bits - MAX L2CPUCLK3 FREQ (Not Available
+					     * yet), lower 16 bits - current L2CPUCLK3
+					     */
+	telemetry[TAG_ETH_LIVE_STATUS] = 0x00000000; /* ETH live status lower 16 bits: heartbeat
+						      * status, upper 16 bits: retrain_status -
+						      * Not Available yet
+						      */
+	telemetry[TAG_FAN_SPEED] = GetFanSpeed();    /* Target fan speed - reported in percentage */
+	telemetry[TAG_FAN_RPM] = GetFanRPM();        /* Actual fan RPM */
 	UpdateGddrTelemetry();
 	telemetry[TAG_MAX_GDDR_TEMP] = GetMaxGDDRTemp();
 	telemetry[TAG_INPUT_POWER] = GetInputPower(); /* Input power - reported in W */

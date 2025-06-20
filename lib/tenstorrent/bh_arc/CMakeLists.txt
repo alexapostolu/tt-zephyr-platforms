@@ -46,7 +46,6 @@ zephyr_library_sources(
   msgqueue.c
   noc2axi.c
   pcie.c
-  pll.c
   post_code.c
   read_only_table.c
   smbus_target.c
