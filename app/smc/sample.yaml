@@ -7,11 +7,12 @@ common:
     - tt_blackhole@p100/tt_blackhole/smc
     - tt_blackhole@p100a/tt_blackhole/smc
     - tt_blackhole@p150a/tt_blackhole/smc
-    - tt_blackhole@p300a/tt_blackhole/smc
 tests:
   app.default: {}
   app.e2e-smoke:
-    tags: e2e
+    tags:
+      - e2e
+      - bh_1x
     harness: pytest
     harness_config:
       pytest_root:
@@ -42,13 +43,43 @@ tests:
       pytest_args:
         - "--dut-scope=session"
   app.vuart:
-    tags: e2e
+    tags:
+      - e2e
+      - bh_1x
     harness: pytest
     harness_config:
       pytest_root:
         - pytest/vuart.py
       pytest_args:
         - "--dut-scope=session"
+  app.e2e-smoke-bh-2x:
+    tags:
+      - e2e
+      - bh_2x
+    harness: pytest
+    harness_config:
+      pytest_root:
+        - pytest/e2e_smoke.py
+      pytest_args:
+        - "--dut-scope=session"
+        - "--asic-id=1"
+        - "-m not flash"
+    platform_allow:
+      - tt_blackhole@p300a/tt_blackhole/smc
+  app.vuart-bh-2x:
+    tags:
+      - e2e
+      - bh_2x
+    harness: pytest
+    harness_config:
+      pytest_root:
+        - pytest/vuart.py
+      pytest_args:
+        - "--dut-scope=session"
+        - "--asic-id=1"
+    platform_allow:
+      - tt_blackhole@p300a/tt_blackhole/smc
+
   # demonstrates pinctrl driver, macros, etc, compile
   app.e2e_smoke.pinctrl:
     tags: e2e
