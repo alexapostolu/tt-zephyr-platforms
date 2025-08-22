@@ -17,6 +17,7 @@
 #include "telemetry_internal.h"
 #include "gddr.h"
 
+
 #include <float.h> /* for FLT_MAX */
 #include <math.h>  /* for floor */
 #include <stdint.h>
@@ -102,6 +103,7 @@ static struct telemetry_table telemetry_table = {
 		[53] = {TAG_ASIC_ID_LOW, TELEM_OFFSET(TAG_ASIC_ID_LOW)},
 		[54] = {TAG_THERM_TRIP_COUNT, TELEM_OFFSET(TAG_THERM_TRIP_COUNT)},
 		[55] = {TAG_TELEM_ENUM_COUNT, TELEM_OFFSET(TAG_TELEM_ENUM_COUNT)},
+		[56] = {TAG_ARC_WDOG_TRIGGERED, TELEM_OFFSET(TAG_ARC_WDOG_TRIGGERED)},
 	},
 };
 static uint32_t *telemetry = &telemetry_table.telemetry[0];
@@ -400,6 +402,11 @@ void UpdateTelemetryBoardPowerLimit(uint32_t power_limit)
 void UpdateTelemetryThermTripCount(uint16_t therm_trip_count)
 {
 	telemetry[TAG_THERM_TRIP_COUNT] = therm_trip_count;
+}
+
+void UpdateTelemetryArcWdogTriggered(uint32_t arc_wdog_triggered)
+{
+	telemetry[TAG_ARC_WDOG_TRIGGERED] = arc_wdog_triggered;
 }
 
 uint32_t GetTelemetryTag(uint16_t tag)

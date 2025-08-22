@@ -72,11 +72,12 @@
 #define TAG_THERM_TRIP_COUNT     60
 #define TAG_ASIC_ID_HIGH         61
 #define TAG_ASIC_ID_LOW          62
+#define TAG_ARC_WDOG_TRIGGERED   63
 /* Not a real tag, signifies the last tag in the list.
  * MUST be incremented if new tags are defined.
  * Note tt-smi currently only supports up to 62 tags on blackhole.
  */
-#define TAG_COUNT                63
+#define TAG_COUNT                64
 
 /* Telemetry tags are at offset `tag` in the telemetry buffer */
 #define TELEM_OFFSET(tag) (tag)
@@ -90,6 +91,7 @@ void UpdateDmFwVersion(uint32_t bl_version, uint32_t app_version);
 void UpdateTelemetryNocTranslation(bool translation_enabled);
 void UpdateTelemetryBoardPowerLimit(uint32_t power_limit);
 void UpdateTelemetryThermTripCount(uint16_t therm_trip_count);
+void UpdateTelemetryArcWdogTriggered(uint32_t arc_wdog_triggered);
 uint32_t GetTelemetryTag(uint16_t tag);
 
 #endif

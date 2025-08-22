@@ -248,6 +248,7 @@ int32_t Dm2CmSendDataHandler(const uint8_t *data, uint8_t size)
 			/* Record last fault PC */
 			WriteReg(ARC_HANG_PC, info->arc_hang_pc);
 		}
+		UpdateTelemetryArcWdogTriggered(info->arc_wdog_triggered);
 		return 0;
 	}
 #endif
