@@ -5,6 +5,7 @@ on:
     tags:
       - 'v*'
       - 'v*rc*'
+  workflow_dispatch:
 
 env:
   RELEASE_NOTES_DIR: doc/release
@@ -101,8 +102,10 @@ jobs:
       - name: Package firmware artifacts
         run: |
           BOARD_REVS=(${{ needs.prepare-release.outputs.boards }})
+          echo "Boards: ${BOARD_REVS[@]}"
 
           for REV in ${BOARD_REVS[@]}; do
+            echo "rev: $REV"
             mv firmware-$REV $REV
             mv $REV/update.fwbundle $REV.fwbundle
           done
