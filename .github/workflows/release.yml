@@ -37,32 +37,6 @@ jobs:
           BOARDS="$(jq -r -c ".[]" .github/boards.json)"
           BOARDS="${BOARDS//$'\n'/ }" # Remove embedded newlines
           echo "boards=$BOARDS" | tee -a $GITHUB_OUTPUT
-      - id: check_relnotes_file
-        run: |
-          relnotes_file="${{ env.RELEASE_NOTES_DIR }}/${{ steps.set_vars.outputs.RELEASE_NOTES }}"
-          if [ "${{ steps.set_vars.outputs.RELEASE_NOTES }}" != "" ] && [ ! -f "$relnotes_file" ]; then
-            echo "Release notes file is not present: $relnotes_file"
-            exit 1
-          fi
-      - name: REUSE Compliance Check
-        uses: fsfe/reuse-action@v5
-        with:
-          args: spdx -o tt-zephyr-platforms-${{ steps.set_vars.outputs.VERSION }}.spdx
-
-      - name: Upload SPDX
-        uses: actions/upload-artifact@v4
-        with:
-          if-no-files-found: error
-          name: tt-zephyr-platforms-${{ steps.set_vars.outputs.VERSION }}.spdx
-          path: tt-zephyr-platforms-${{ steps.set_vars.outputs.VERSION }}.spdx
-
-      - name: Upload Release Notes
-        if: ${{ steps.set_vars.outputs.RELEASE_NOTES }}
-        uses: actions/upload-artifact@v4
-        with:
-          if-no-files-found: error
-          name: ${{ steps.set_vars.outputs.RELEASE_NOTES }}
-          path: ${{ env.RELEASE_NOTES_DIR }}/${{ steps.set_vars.outputs.RELEASE_NOTES }}
 
   build-release:
     needs: [prepare-release]
