@@ -200,6 +200,8 @@ void CalculateThrottlers(void)
 	UpdateThrottler(kThrottlerBoardPower, GetInputPower());
 	UpdateThrottler(kThrottlerGDDRThm, GetMaxGDDRTemp());
 
+	sys_trace_named_event("thr", telemetry_internal_data.vcore_power, GetInputPower());
+
 	for (ThrottlerId i = 0; i < kThrottlerCount; i++) {
 		UpdateThrottlerArb(i);
 	}
