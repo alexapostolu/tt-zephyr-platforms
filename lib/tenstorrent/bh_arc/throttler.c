@@ -11,8 +11,10 @@
 #include "aiclk_ppm.h"
 #include "cm2dm_msg.h"
 #include <zephyr/drivers/misc/bh_fwtable.h>
+#include <zephyr/tracing/tracing.h>
 #include "telemetry_internal.h"
 #include "telemetry.h"
+#include "timer.h"
 
 #define kThrottlerAiclkScaleFactor 500.0F
 #define DEFAULT_BOARD_POWER_LIMIT  150
@@ -174,6 +176,11 @@ static void UpdateThrottler(ThrottlerId id, float value)
 	t->error = (t->limit - t->value) / t->limit;
 	t->output = t->params.p_gain * t->error + t->params.d_gain * (t->error - t->prev_error);
 	t->prev_error = t->error;
+
+	if (id == kThrottlerTDC) {
+		sys_trace_named_event("1", t->limit, t->value);
+		sys_trace_named_event("2", t->limit - t->value, t->error * 100);
+	}
 }
 
 static void UpdateThrottlerArb(ThrottlerId id)

@@ -24,12 +24,15 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/drivers/watchdog.h>
 #include <zephyr/drivers/misc/bh_fwtable.h>
+#include <zephyr/drivers/clock_control.h>
+#include <zephyr/drivers/clock_control/clock_control_tt_bh.h>
 #include <zephyr/storage/flash_map.h>
 
 LOG_MODULE_REGISTER(main, CONFIG_TT_APP_LOG_LEVEL);
 
 static const struct device *const wdt0 = DEVICE_DT_GET(DT_NODELABEL(wdt0));
 static const struct device *const fwtable_dev = DEVICE_DT_GET(DT_NODELABEL(fwtable));
+static const struct device *const pll = DEVICE_DT_GET(DT_NODELABEL(pll0));
 
 BUILD_ASSERT(FIXED_PARTITION_EXISTS(cmfw), "cmfw fixed-partition does not exist");
 
@@ -76,6 +79,21 @@ int main(void)
 	}
 
 	Dm2CmReadyRequest();
+
+	k_msleep(5000);
+
+	clock_control_subsys_t aiclk_subsys =
+		(clock_control_subsys_t)CLOCK_CONTROL_TT_BH_CLOCK_AICLK;
+
+	for (int i = 900; i < 1350; i += 50) {
+		clock_control_set_rate(pll, aiclk_subsys, (clock_control_subsys_rate_t)i);
+
+		k_msleep(1000);
+	}
+
+	k_msleep(2000);
+
+	clock_control_set_rate(pll, aiclk_subsys, (clock_control_subsys_rate_t)850);
 
 	while (1) {
 		sys_trace_named_event("main_loop", TimerTimestamp(), 0);
