@@ -7,15 +7,28 @@
 #include <zephyr/sys/util.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/sys/byteorder.h>
+#include <zephyr/sys/sys_io.h>
 #include "throttler.h"
 #include "aiclk_ppm.h"
 #include "cm2dm_msg.h"
 #include <zephyr/drivers/misc/bh_fwtable.h>
 #include "telemetry_internal.h"
 #include "telemetry.h"
+#include "timer.h"
 
 #define kThrottlerAiclkScaleFactor 500.0F
 #define DEFAULT_BOARD_POWER_LIMIT  150
+
+/* CSM memory region for telemetry data */
+#define CSM_TELEMETRY_BASE_ADDR     0x10060000
+#define CSM_TELEMETRY_END_ADDR      0x1007FFFF
+#define CSM_TELEMETRY_SIZE          (CSM_TELEMETRY_END_ADDR - CSM_TELEMETRY_BASE_ADDR + 1)
+
+/* CSM memory offsets for specific telemetry values */
+#define CSM_OFFSET_TDP_POWER        0x0004  /* TDP power value (float as uint32_t) */
+#define CSM_OFFSET_BOARD_POWER      0x0008  /* Board power value (float as uint32_t) */
+#define CSM_OFFSET_TDP_LIMIT        0x000C  /* TDP limit value (float as uint32_t) */
+#define CSM_OFFSET_BOARD_POWER_LIMIT 0x0010 /* Board power limit value (float as uint32_t) */
 
 LOG_MODULE_REGISTER(throttler);
 
@@ -189,6 +202,8 @@ static void UpdateThrottlerArb(ThrottlerId id)
 
 void CalculateThrottlers(void)
 {
+	static int j = 0;
+
 	TelemetryInternalData telemetry_internal_data;
 
 	ReadTelemetryInternal(1, &telemetry_internal_data);
@@ -199,6 +214,34 @@ void CalculateThrottlers(void)
 	UpdateThrottler(kThrottlerThm, telemetry_internal_data.asic_temperature);
 	UpdateThrottler(kThrottlerBoardPower, GetInputPower());
 	UpdateThrottler(kThrottlerGDDRThm, GetMaxGDDRTemp());
+
+	/* Write telemetry values to CSM memory for external access */
+	union {
+		float f;
+		uint32_t u;
+	} float_to_uint;
+
+	if (j < 500) {
+		WriteTelemetryToCSM(0x0000 + (j * 12), TimerTimestamp());
+
+		/* Write TDP power value */
+		float_to_uint.f = telemetry_internal_data.vcore_power;
+		WriteTelemetryToCSM(0x0004 + (j * 12), float_to_uint.u);
+
+		/* Write Board power value */
+		float_to_uint.f = GetInputPower();
+		WriteTelemetryToCSM(0x0008 + (j * 12), float_to_uint.u);
+
+		/* Write TDP limit value */
+		//float_to_uint.f = throttler[kThrottlerTDP].limit;
+		//WriteTelemetryToCSM(CSM_OFFSET_TDP_LIMIT + (j * 16), float_to_uint.u);
+
+		/* Write Board power limit value */
+		//float_to_uint.f = throttler[kThrottlerBoardPower].limit;
+		//WriteTelemetryToCSM(CSM_OFFSET_BOARD_POWER_LIMIT + (j * 16), float_to_uint.u);
+
+		j++;
+	}
 
 	for (ThrottlerId i = 0; i < kThrottlerCount; i++) {
 		UpdateThrottlerArb(i);
@@ -221,4 +264,56 @@ int32_t Dm2CmSetBoardPowerLimit(const uint8_t *data, uint8_t size)
 	UpdateTelemetryBoardPowerLimit(power_limit);
 
 	return 0;
+}
+
+/**
+ * @brief Read telemetry data from CSM memory region
+ * 
+ * @param offset Offset from CSM_TELEMETRY_BASE_ADDR (must be 4-byte aligned)
+ * @return uint32_t Value read from the specified CSM memory location
+ */
+uint32_t ReadTelemetryFromCSM(uint32_t offset)
+{
+	uintptr_t addr = CSM_TELEMETRY_BASE_ADDR + offset;
+	
+	/* Validate address is within CSM telemetry region */
+	if (addr > CSM_TELEMETRY_END_ADDR) {
+		LOG_ERR("CSM telemetry read address 0x%08x out of range", (uint32_t)addr);
+		return 0;
+	}
+	
+	/* Ensure 4-byte alignment for 32-bit reads */
+	if (offset & 0x3) {
+		LOG_WRN("CSM telemetry read offset 0x%08x not 4-byte aligned", offset);
+	}
+	
+	uint32_t value = sys_read32(addr);
+	LOG_DBG("CSM telemetry read: addr=0x%08x, value=0x%08x", (uint32_t)addr, value);
+	
+	return value;
+}
+
+/**
+ * @brief Write telemetry data to CSM memory region
+ * 
+ * @param offset Offset from CSM_TELEMETRY_BASE_ADDR (must be 4-byte aligned)
+ * @param value Value to write to the specified CSM memory location
+ */
+void WriteTelemetryToCSM(uint32_t offset, uint32_t value)
+{
+	uintptr_t addr = CSM_TELEMETRY_BASE_ADDR + offset;
+	
+	/* Validate address is within CSM telemetry region */
+	if (addr > CSM_TELEMETRY_END_ADDR) {
+		LOG_ERR("CSM telemetry write address 0x%08x out of range", (uint32_t)addr);
+		return;
+	}
+	
+	/* Ensure 4-byte alignment for 32-bit writes */
+	if (offset & 0x3) {
+		LOG_WRN("CSM telemetry write offset 0x%08x not 4-byte aligned", offset);
+	}
+	
+	LOG_DBG("CSM telemetry write: addr=0x%08x, value=0x%08x", (uint32_t)addr, value);
+	sys_write32(value, addr);
 }

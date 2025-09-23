@@ -1,0 +1,1535 @@
+Press Ctrl-a,x to quit
+         .:.                 .:
+      .:-----:..             :+++-.
+   .:------------:.          :++++++=:
+ :------------------:..      :+++++++++
+ :----------------------:.   :+++++++++
+ :-------------------------:.:+++++++++
+ :--------:  .:-----------:. :+++++++++
+ :--------:     .:----:.     :+++++++++
+ .:-------:         .        :++++++++-
+    .:----:                  :++++=:.
+        .::                  :+=:
+          .:.               ::
+          .===-:        .-===-
+          .=======:. :-======-
+          .==================-
+          .==================-
+           ==================:
+            :-==========-:.
+                .:====-.
+
+*** Booting tt_blackhole with Zephyr OS v4.2.0 ***
+*** TT_GIT_VERSION v18.10.0-95-g0f7b002c69bc ***
+*** SDK_VERSION zephyr sdk 0.17.2 ***
+Tenstorrent Blackhole CMFW 0.20.0-rc1
+[00:00:00.743,000] [0m<inf> throttler: Throttler 0 limit set to 150[0m
+[00:00:00.743,000] [0m<inf> throttler: Throttler 1 limit set to 220[0m
+[00:00:00.743,000] [0m<inf> throttler: Throttler 2 limit set to 200[0m
+[00:00:00.743,000] [0m<inf> throttler: Throttler 3 limit set to 90[0m
+[00:00:00.743,000] [0m<inf> throttler: Throttler 4 limit set to 150[0m
+[00:00:00.743,000] [0m<inf> throttler: Throttler 5 limit set to 85[0m
+[00:00:00.782,000] [0m<inf> throttler: Cable Power Limit: 600[0m
+[00:00:00.782,000] [0m<inf> throttler: Throttler 4 limit set to 300[0m
+[00:00:01.248,000] [0m<inf> main: === CSM Telemetry Values ===[0m
+[00:00:01.248,000] [0m<inf> main: Time: 0.791 W[0m
+[00:00:01.248,000] [0m<inf> main: TDP Power: 48.64 W[0m
+[00:00:01.248,000] [0m<inf> main: Board Power: 157.00 W[0m
+[00:00:01.299,000] [0m<inf> main: Time: 0.792 W[0m
+[00:00:01.299,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:01.299,000] [0m<inf> main: Board Power: 157.00 W[0m
+[00:00:01.350,000] [0m<inf> main: Time: 0.793 W[0m
+[00:00:01.350,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:01.350,000] [0m<inf> main: Board Power: 157.00 W[0m
+[00:00:01.401,000] [0m<inf> main: Time: 0.794 W[0m
+[00:00:01.401,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:01.401,000] [0m<inf> main: Board Power: 157.00 W[0m
+[00:00:01.452,000] [0m<inf> main: Time: 0.795 W[0m
+[00:00:01.452,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:01.452,000] [0m<inf> main: Board Power: 157.00 W[0m
+[00:00:01.503,000] [0m<inf> main: Time: 0.796 W[0m
+[00:00:01.503,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:01.503,000] [0m<inf> main: Board Power: 157.00 W[0m
+[00:00:01.554,000] [0m<inf> main: Time: 0.797 W[0m
+[00:00:01.554,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:01.554,000] [0m<inf> main: Board Power: 157.00 W[0m
+[00:00:01.605,000] [0m<inf> main: Time: 0.798 W[0m
+[00:00:01.605,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:01.605,000] [0m<inf> main: Board Power: 157.00 W[0m
+[00:00:01.656,000] [0m<inf> main: Time: 0.799 W[0m
+[00:00:01.656,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:01.656,000] [0m<inf> main: Board Power: 157.00 W[0m
+[00:00:01.707,000] [0m<inf> main: Time: 0.800 W[0m
+[00:00:01.707,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:01.707,000] [0m<inf> main: Board Power: 157.00 W[0m
+[00:00:01.758,000] [0m<inf> main: Time: 0.801 W[0m
+[00:00:01.758,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:01.758,000] [0m<inf> main: Board Power: 157.00 W[0m
+[00:00:01.809,000] [0m<inf> main: Time: 0.802 W[0m
+[00:00:01.809,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:01.809,000] [0m<inf> main: Board Power: 157.00 W[0m
+[00:00:01.860,000] [0m<inf> main: Time: 0.803 W[0m
+[00:00:01.860,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:01.860,000] [0m<inf> main: Board Power: 157.00 W[0m
+[00:00:01.911,000] [0m<inf> main: Time: 0.804 W[0m
+[00:00:01.911,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:01.911,000] [0m<inf> main: Board Power: 157.00 W[0m
+[00:00:01.962,000] [0m<inf> main: Time: 0.805 W[0m
+[00:00:01.962,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:01.962,000] [0m<inf> main: Board Power: 157.00 W[0m
+[00:00:02.013,000] [0m<inf> main: Time: 0.806 W[0m
+[00:00:02.013,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:02.013,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:02.064,000] [0m<inf> main: Time: 0.807 W[0m
+[00:00:02.064,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:02.064,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:02.115,000] [0m<inf> main: Time: 0.808 W[0m
+[00:00:02.115,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:02.115,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:02.166,000] [0m<inf> main: Time: 0.809 W[0m
+[00:00:02.166,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:02.166,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:02.217,000] [0m<inf> main: Time: 0.810 W[0m
+[00:00:02.217,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:02.217,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:02.268,000] [0m<inf> main: Time: 0.811 W[0m
+[00:00:02.268,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:02.268,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:02.319,000] [0m<inf> main: Time: 0.812 W[0m
+[00:00:02.319,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:02.319,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:02.370,000] [0m<inf> main: Time: 0.813 W[0m
+[00:00:02.370,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:02.370,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:02.421,000] [0m<inf> main: Time: 0.814 W[0m
+[00:00:02.421,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:02.421,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:02.472,000] [0m<inf> main: Time: 0.815 W[0m
+[00:00:02.472,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:02.472,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:02.523,000] [0m<inf> main: Time: 0.816 W[0m
+[00:00:02.523,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:02.523,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:02.574,000] [0m<inf> main: Time: 0.817 W[0m
+[00:00:02.574,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:02.574,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:02.625,000] [0m<inf> main: Time: 0.818 W[0m
+[00:00:02.625,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:02.625,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:02.676,000] [0m<inf> main: Time: 0.819 W[0m
+[00:00:02.676,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:02.676,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:02.727,000] [0m<inf> main: Time: 0.820 W[0m
+[00:00:02.727,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:02.727,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:02.778,000] [0m<inf> main: Time: 0.821 W[0m
+[00:00:02.778,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:02.778,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:02.829,000] [0m<inf> main: Time: 0.822 W[0m
+[00:00:02.829,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:02.829,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:02.880,000] [0m<inf> main: Time: 0.823 W[0m
+[00:00:02.880,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:02.880,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:02.931,000] [0m<inf> main: Time: 0.824 W[0m
+[00:00:02.931,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:02.931,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:02.982,000] [0m<inf> main: Time: 0.825 W[0m
+[00:00:02.982,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:02.982,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:03.033,000] [0m<inf> main: Time: 0.826 W[0m
+[00:00:03.033,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:03.033,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:03.084,000] [0m<inf> main: Time: 0.827 W[0m
+[00:00:03.084,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:03.084,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:03.135,000] [0m<inf> main: Time: 0.828 W[0m
+[00:00:03.135,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:03.135,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:03.186,000] [0m<inf> main: Time: 0.829 W[0m
+[00:00:03.186,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:03.186,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:03.237,000] [0m<inf> main: Time: 0.830 W[0m
+[00:00:03.237,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:03.237,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:03.288,000] [0m<inf> main: Time: 0.831 W[0m
+[00:00:03.288,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:03.288,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:03.339,000] [0m<inf> main: Time: 0.832 W[0m
+[00:00:03.339,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:03.339,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:03.390,000] [0m<inf> main: Time: 0.833 W[0m
+[00:00:03.390,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:03.390,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:03.441,000] [0m<inf> main: Time: 0.834 W[0m
+[00:00:03.441,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:03.441,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:03.492,000] [0m<inf> main: Time: 0.835 W[0m
+[00:00:03.492,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:03.492,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:03.543,000] [0m<inf> main: Time: 0.836 W[0m
+[00:00:03.543,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:03.543,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:03.594,000] [0m<inf> main: Time: 0.837 W[0m
+[00:00:03.594,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:03.594,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:03.645,000] [0m<inf> main: Time: 0.838 W[0m
+[00:00:03.645,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:03.645,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:03.696,000] [0m<inf> main: Time: 0.839 W[0m
+[00:00:03.696,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:03.696,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:03.747,000] [0m<inf> main: Time: 0.840 W[0m
+[00:00:03.747,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:03.747,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:03.798,000] [0m<inf> main: Time: 0.841 W[0m
+[00:00:03.798,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:03.798,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:03.849,000] [0m<inf> main: Time: 0.842 W[0m
+[00:00:03.849,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:03.849,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:03.900,000] [0m<inf> main: Time: 0.843 W[0m
+[00:00:03.900,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:03.900,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:03.951,000] [0m<inf> main: Time: 0.844 W[0m
+[00:00:03.951,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:03.951,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:04.002,000] [0m<inf> main: Time: 0.845 W[0m
+[00:00:04.002,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:04.002,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:04.053,000] [0m<inf> main: Time: 0.846 W[0m
+[00:00:04.053,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:04.053,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:04.104,000] [0m<inf> main: Time: 0.847 W[0m
+[00:00:04.104,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:04.104,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:04.155,000] [0m<inf> main: Time: 0.848 W[0m
+[00:00:04.155,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:04.155,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:04.206,000] [0m<inf> main: Time: 0.849 W[0m
+[00:00:04.206,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:04.206,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:04.257,000] [0m<inf> main: Time: 0.850 W[0m
+[00:00:04.257,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:04.257,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:04.308,000] [0m<inf> main: Time: 0.851 W[0m
+[00:00:04.308,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:04.308,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:04.359,000] [0m<inf> main: Time: 0.852 W[0m
+[00:00:04.359,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:04.359,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:04.410,000] [0m<inf> main: Time: 0.853 W[0m
+[00:00:04.410,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:04.410,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:04.461,000] [0m<inf> main: Time: 0.854 W[0m
+[00:00:04.461,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:04.461,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:04.512,000] [0m<inf> main: Time: 0.855 W[0m
+[00:00:04.512,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:04.512,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:04.563,000] [0m<inf> main: Time: 0.856 W[0m
+[00:00:04.563,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:04.563,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:04.614,000] [0m<inf> main: Time: 0.857 W[0m
+[00:00:04.614,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:04.614,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:04.665,000] [0m<inf> main: Time: 0.858 W[0m
+[00:00:04.665,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:04.665,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:04.716,000] [0m<inf> main: Time: 0.859 W[0m
+[00:00:04.716,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:04.716,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:04.767,000] [0m<inf> main: Time: 0.860 W[0m
+[00:00:04.767,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:04.767,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:04.818,000] [0m<inf> main: Time: 0.861 W[0m
+[00:00:04.818,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:04.818,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:04.869,000] [0m<inf> main: Time: 0.862 W[0m
+[00:00:04.869,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:04.869,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:04.920,000] [0m<inf> main: Time: 0.863 W[0m
+[00:00:04.920,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:04.920,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:04.971,000] [0m<inf> main: Time: 0.864 W[0m
+[00:00:04.971,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:04.971,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:05.022,000] [0m<inf> main: Time: 0.865 W[0m
+[00:00:05.022,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:05.022,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:05.073,000] [0m<inf> main: Time: 0.866 W[0m
+[00:00:05.073,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:05.073,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:05.124,000] [0m<inf> main: Time: 0.867 W[0m
+[00:00:05.124,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:05.124,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:05.175,000] [0m<inf> main: Time: 0.868 W[0m
+[00:00:05.175,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:05.175,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:05.226,000] [0m<inf> main: Time: 0.869 W[0m
+[00:00:05.226,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:05.226,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:05.277,000] [0m<inf> main: Time: 0.870 W[0m
+[00:00:05.277,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:05.277,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:05.328,000] [0m<inf> main: Time: 0.871 W[0m
+[00:00:05.328,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:05.328,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:05.379,000] [0m<inf> main: Time: 0.872 W[0m
+[00:00:05.379,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:05.379,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:05.430,000] [0m<inf> main: Time: 0.873 W[0m
+[00:00:05.430,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:05.430,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:05.481,000] [0m<inf> main: Time: 0.874 W[0m
+[00:00:05.481,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:05.481,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:05.532,000] [0m<inf> main: Time: 0.875 W[0m
+[00:00:05.532,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:05.532,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:05.583,000] [0m<inf> main: Time: 0.876 W[0m
+[00:00:05.583,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:05.583,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:05.634,000] [0m<inf> main: Time: 0.877 W[0m
+[00:00:05.634,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:05.634,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:05.685,000] [0m<inf> main: Time: 0.878 W[0m
+[00:00:05.685,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:05.685,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:05.736,000] [0m<inf> main: Time: 0.879 W[0m
+[00:00:05.736,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:05.736,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:05.787,000] [0m<inf> main: Time: 0.880 W[0m
+[00:00:05.787,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:05.787,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:05.838,000] [0m<inf> main: Time: 0.881 W[0m
+[00:00:05.838,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:05.838,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:05.889,000] [0m<inf> main: Time: 0.882 W[0m
+[00:00:05.889,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:05.889,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:05.940,000] [0m<inf> main: Time: 0.883 W[0m
+[00:00:05.940,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:05.940,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:05.991,000] [0m<inf> main: Time: 0.884 W[0m
+[00:00:05.991,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:05.991,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:06.042,000] [0m<inf> main: Time: 0.885 W[0m
+[00:00:06.042,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:06.042,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:06.093,000] [0m<inf> main: Time: 0.886 W[0m
+[00:00:06.093,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:06.093,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:06.144,000] [0m<inf> main: Time: 0.887 W[0m
+[00:00:06.144,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:06.144,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:06.195,000] [0m<inf> main: Time: 0.888 W[0m
+[00:00:06.195,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:06.195,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:06.246,000] [0m<inf> main: Time: 0.889 W[0m
+[00:00:06.246,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:06.246,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:06.297,000] [0m<inf> main: Time: 0.890 W[0m
+[00:00:06.297,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:06.297,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:06.348,000] [0m<inf> main: Time: 0.891 W[0m
+[00:00:06.348,000] [0m<inf> main: TDP Power: 64.12 W[0m
+[00:00:06.348,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:06.399,000] [0m<inf> main: Time: 0.892 W[0m
+[00:00:06.399,000] [0m<inf> main: TDP Power: 64.12 W[0m
+[00:00:06.399,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:06.450,000] [0m<inf> main: Time: 0.893 W[0m
+[00:00:06.450,000] [0m<inf> main: TDP Power: 64.12 W[0m
+[00:00:06.450,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:06.501,000] [0m<inf> main: Time: 0.894 W[0m
+[00:00:06.501,000] [0m<inf> main: TDP Power: 64.12 W[0m
+[00:00:06.501,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:06.552,000] [0m<inf> main: Time: 0.895 W[0m
+[00:00:06.552,000] [0m<inf> main: TDP Power: 63.38 W[0m
+[00:00:06.552,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:06.603,000] [0m<inf> main: Time: 0.896 W[0m
+[00:00:06.603,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:06.603,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:06.654,000] [0m<inf> main: Time: 0.897 W[0m
+[00:00:06.654,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:06.654,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:06.705,000] [0m<inf> main: Time: 0.898 W[0m
+[00:00:06.705,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:06.705,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:06.756,000] [0m<inf> main: Time: 0.899 W[0m
+[00:00:06.756,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:06.756,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:06.807,000] [0m<inf> main: Time: 0.900 W[0m
+[00:00:06.807,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:06.807,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:06.858,000] [0m<inf> main: Time: 0.901 W[0m
+[00:00:06.858,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:06.858,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:06.909,000] [0m<inf> main: Time: 0.902 W[0m
+[00:00:06.909,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:06.909,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:06.960,000] [0m<inf> main: Time: 0.903 W[0m
+[00:00:06.960,000] [0m<inf> main: TDP Power: 63.04 W[0m
+[00:00:06.960,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:07.011,000] [0m<inf> main: Time: 0.904 W[0m
+[00:00:07.011,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:07.011,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:07.062,000] [0m<inf> main: Time: 0.905 W[0m
+[00:00:07.062,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:07.062,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:07.113,000] [0m<inf> main: Time: 0.906 W[0m
+[00:00:07.113,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:07.113,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:07.164,000] [0m<inf> main: Time: 0.907 W[0m
+[00:00:07.164,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:07.164,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:07.215,000] [0m<inf> main: Time: 0.908 W[0m
+[00:00:07.215,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:07.215,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:07.266,000] [0m<inf> main: Time: 0.909 W[0m
+[00:00:07.266,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:07.266,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:07.317,000] [0m<inf> main: Time: 0.910 W[0m
+[00:00:07.317,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:07.317,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:07.368,000] [0m<inf> main: Time: 0.911 W[0m
+[00:00:07.368,000] [0m<inf> main: TDP Power: 62.95 W[0m
+[00:00:07.368,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:07.419,000] [0m<inf> main: Time: 0.912 W[0m
+[00:00:07.419,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:07.419,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:07.470,000] [0m<inf> main: Time: 0.913 W[0m
+[00:00:07.470,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:07.470,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:07.521,000] [0m<inf> main: Time: 0.914 W[0m
+[00:00:07.521,000] [0m<inf> main: TDP Power: 62.95 W[0m
+[00:00:07.521,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:07.572,000] [0m<inf> main: Time: 0.915 W[0m
+[00:00:07.572,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:07.572,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:07.623,000] [0m<inf> main: Time: 0.916 W[0m
+[00:00:07.623,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:07.623,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:07.674,000] [0m<inf> main: Time: 0.917 W[0m
+[00:00:07.674,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:07.674,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:07.725,000] [0m<inf> main: Time: 0.918 W[0m
+[00:00:07.725,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:07.725,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:07.776,000] [0m<inf> main: Time: 0.919 W[0m
+[00:00:07.776,000] [0m<inf> main: TDP Power: 62.95 W[0m
+[00:00:07.776,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:07.827,000] [0m<inf> main: Time: 0.920 W[0m
+[00:00:07.827,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:07.827,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:07.878,000] [0m<inf> main: Time: 0.921 W[0m
+[00:00:07.878,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:07.878,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:07.929,000] [0m<inf> main: Time: 0.922 W[0m
+[00:00:07.929,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:07.929,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:07.980,000] [0m<inf> main: Time: 0.923 W[0m
+[00:00:07.980,000] [0m<inf> main: TDP Power: 62.95 W[0m
+[00:00:07.980,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:08.031,000] [0m<inf> main: Time: 0.924 W[0m
+[00:00:08.031,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:08.031,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:08.082,000] [0m<inf> main: Time: 0.925 W[0m
+[00:00:08.082,000] [0m<inf> main: TDP Power: 62.95 W[0m
+[00:00:08.082,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:08.133,000] [0m<inf> main: Time: 0.926 W[0m
+[00:00:08.133,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:08.133,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:08.184,000] [0m<inf> main: Time: 0.927 W[0m
+[00:00:08.184,000] [0m<inf> main: TDP Power: 62.95 W[0m
+[00:00:08.184,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:08.235,000] [0m<inf> main: Time: 0.928 W[0m
+[00:00:08.235,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:08.235,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:08.286,000] [0m<inf> main: Time: 0.929 W[0m
+[00:00:08.286,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:08.286,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:08.337,000] [0m<inf> main: Time: 0.930 W[0m
+[00:00:08.337,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:08.337,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:08.388,000] [0m<inf> main: Time: 0.931 W[0m
+[00:00:08.388,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:08.388,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:08.439,000] [0m<inf> main: Time: 0.932 W[0m
+[00:00:08.439,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:08.439,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:08.490,000] [0m<inf> main: Time: 0.933 W[0m
+[00:00:08.490,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:08.490,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:08.541,000] [0m<inf> main: Time: 0.934 W[0m
+[00:00:08.541,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:08.541,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:08.592,000] [0m<inf> main: Time: 0.935 W[0m
+[00:00:08.592,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:08.592,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:08.643,000] [0m<inf> main: Time: 0.936 W[0m
+[00:00:08.643,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:08.643,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:08.694,000] [0m<inf> main: Time: 0.937 W[0m
+[00:00:08.694,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:08.694,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:08.745,000] [0m<inf> main: Time: 0.938 W[0m
+[00:00:08.745,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:08.745,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:08.796,000] [0m<inf> main: Time: 0.939 W[0m
+[00:00:08.796,000] [0m<inf> main: TDP Power: 62.95 W[0m
+[00:00:08.796,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:08.847,000] [0m<inf> main: Time: 0.940 W[0m
+[00:00:08.847,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:08.847,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:08.898,000] [0m<inf> main: Time: 0.941 W[0m
+[00:00:08.898,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:08.898,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:08.949,000] [0m<inf> main: Time: 0.942 W[0m
+[00:00:08.949,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:08.949,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:09.000,000] [0m<inf> main: Time: 0.943 W[0m
+[00:00:09.000,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:09.000,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:09.051,000] [0m<inf> main: Time: 0.944 W[0m
+[00:00:09.051,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:09.051,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:09.102,000] [0m<inf> main: Time: 0.945 W[0m
+[00:00:09.102,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:09.102,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:09.153,000] [0m<inf> main: Time: 0.946 W[0m
+[00:00:09.153,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:09.153,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:09.204,000] [0m<inf> main: Time: 0.947 W[0m
+[00:00:09.204,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:09.204,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:09.255,000] [0m<inf> main: Time: 0.948 W[0m
+[00:00:09.255,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:09.255,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:09.306,000] [0m<inf> main: Time: 0.949 W[0m
+[00:00:09.306,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:09.306,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:09.357,000] [0m<inf> main: Time: 0.950 W[0m
+[00:00:09.357,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:09.357,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:09.408,000] [0m<inf> main: Time: 0.951 W[0m
+[00:00:09.408,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:09.408,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:09.459,000] [0m<inf> main: Time: 0.952 W[0m
+[00:00:09.459,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:09.459,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:09.510,000] [0m<inf> main: Time: 0.953 W[0m
+[00:00:09.510,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:09.510,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:09.561,000] [0m<inf> main: Time: 0.954 W[0m
+[00:00:09.561,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:09.561,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:09.612,000] [0m<inf> main: Time: 0.955 W[0m
+[00:00:09.612,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:09.612,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:09.663,000] [0m<inf> main: Time: 0.956 W[0m
+[00:00:09.663,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:09.663,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:09.714,000] [0m<inf> main: Time: 0.957 W[0m
+[00:00:09.714,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:09.714,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:09.765,000] [0m<inf> main: Time: 0.958 W[0m
+[00:00:09.765,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:09.765,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:09.816,000] [0m<inf> main: Time: 0.959 W[0m
+[00:00:09.816,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:09.816,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:09.867,000] [0m<inf> main: Time: 0.960 W[0m
+[00:00:09.867,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:09.867,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:09.918,000] [0m<inf> main: Time: 0.961 W[0m
+[00:00:09.918,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:09.918,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:09.969,000] [0m<inf> main: Time: 0.962 W[0m
+[00:00:09.969,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:09.969,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:10.020,000] [0m<inf> main: Time: 0.963 W[0m
+[00:00:10.020,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:10.020,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:10.071,000] [0m<inf> main: Time: 0.964 W[0m
+[00:00:10.071,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:10.071,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:10.122,000] [0m<inf> main: Time: 0.965 W[0m
+[00:00:10.122,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:10.122,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:10.173,000] [0m<inf> main: Time: 0.966 W[0m
+[00:00:10.173,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:10.173,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:10.224,000] [0m<inf> main: Time: 0.967 W[0m
+[00:00:10.224,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:10.224,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:10.275,000] [0m<inf> main: Time: 0.968 W[0m
+[00:00:10.275,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:10.275,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:10.326,000] [0m<inf> main: Time: 0.969 W[0m
+[00:00:10.326,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:10.326,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:10.377,000] [0m<inf> main: Time: 0.970 W[0m
+[00:00:10.377,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:10.377,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:10.428,000] [0m<inf> main: Time: 0.971 W[0m
+[00:00:10.428,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:10.428,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:10.479,000] [0m<inf> main: Time: 0.972 W[0m
+[00:00:10.479,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:10.479,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:10.530,000] [0m<inf> main: Time: 0.973 W[0m
+[00:00:10.530,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:10.530,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:10.581,000] [0m<inf> main: Time: 0.974 W[0m
+[00:00:10.581,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:10.581,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:10.632,000] [0m<inf> main: Time: 0.975 W[0m
+[00:00:10.632,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:10.632,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:10.683,000] [0m<inf> main: Time: 0.976 W[0m
+[00:00:10.683,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:10.683,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:10.734,000] [0m<inf> main: Time: 0.977 W[0m
+[00:00:10.734,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:10.734,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:10.785,000] [0m<inf> main: Time: 0.978 W[0m
+[00:00:10.785,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:10.785,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:10.836,000] [0m<inf> main: Time: 0.979 W[0m
+[00:00:10.836,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:10.836,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:10.887,000] [0m<inf> main: Time: 0.980 W[0m
+[00:00:10.887,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:10.887,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:10.938,000] [0m<inf> main: Time: 0.981 W[0m
+[00:00:10.938,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:10.938,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:10.989,000] [0m<inf> main: Time: 0.982 W[0m
+[00:00:10.989,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:10.989,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:11.040,000] [0m<inf> main: Time: 0.983 W[0m
+[00:00:11.040,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:11.040,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:11.091,000] [0m<inf> main: Time: 0.984 W[0m
+[00:00:11.091,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:11.091,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:11.142,000] [0m<inf> main: Time: 0.985 W[0m
+[00:00:11.142,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:11.142,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:11.193,000] [0m<inf> main: Time: 0.986 W[0m
+[00:00:11.193,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:11.193,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:11.244,000] [0m<inf> main: Time: 0.987 W[0m
+[00:00:11.244,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:11.244,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:11.295,000] [0m<inf> main: Time: 0.988 W[0m
+[00:00:11.295,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:11.295,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:11.346,000] [0m<inf> main: Time: 0.989 W[0m
+[00:00:11.346,000] [0m<inf> main: TDP Power: 62.95 W[0m
+[00:00:11.346,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:11.397,000] [0m<inf> main: Time: 0.990 W[0m
+[00:00:11.397,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:11.397,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:11.448,000] [0m<inf> main: Time: 0.991 W[0m
+[00:00:11.448,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:11.448,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:11.499,000] [0m<inf> main: Time: 0.993 W[0m
+[00:00:11.499,000] [0m<inf> main: TDP Power: 46.85 W[0m
+[00:00:11.499,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:11.550,000] [0m<inf> main: Time: 0.993 W[0m
+[00:00:11.550,000] [0m<inf> main: TDP Power: 46.85 W[0m
+[00:00:11.550,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:11.601,000] [0m<inf> main: Time: 0.994 W[0m
+[00:00:11.601,000] [0m<inf> main: TDP Power: 46.85 W[0m
+[00:00:11.601,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:11.652,000] [0m<inf> main: Time: 0.995 W[0m
+[00:00:11.652,000] [0m<inf> main: TDP Power: 46.85 W[0m
+[00:00:11.652,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:11.703,000] [0m<inf> main: Time: 0.996 W[0m
+[00:00:11.703,000] [0m<inf> main: TDP Power: 46.85 W[0m
+[00:00:11.703,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:11.754,000] [0m<inf> main: Time: 0.997 W[0m
+[00:00:11.754,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:11.754,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:11.805,000] [0m<inf> main: Time: 0.998 W[0m
+[00:00:11.805,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:11.805,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:11.856,000] [0m<inf> main: Time: 0.999 W[0m
+[00:00:11.856,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:11.856,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:11.907,000] [0m<inf> main: Time: 1.000 W[0m
+[00:00:11.907,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:11.907,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:11.958,000] [0m<inf> main: Time: 1.001 W[0m
+[00:00:11.958,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:11.958,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:12.009,000] [0m<inf> main: Time: 1.002 W[0m
+[00:00:12.009,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:12.009,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:12.060,000] [0m<inf> main: Time: 1.003 W[0m
+[00:00:12.060,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:12.060,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:12.111,000] [0m<inf> main: Time: 1.004 W[0m
+[00:00:12.111,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:12.111,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:12.162,000] [0m<inf> main: Time: 1.005 W[0m
+[00:00:12.162,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:12.162,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:12.213,000] [0m<inf> main: Time: 1.006 W[0m
+[00:00:12.213,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:12.213,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:12.264,000] [0m<inf> main: Time: 1.007 W[0m
+[00:00:12.264,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:12.264,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:12.315,000] [0m<inf> main: Time: 1.008 W[0m
+[00:00:12.315,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:12.315,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:12.366,000] [0m<inf> main: Time: 1.009 W[0m
+[00:00:12.366,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:12.366,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:12.417,000] [0m<inf> main: Time: 1.010 W[0m
+[00:00:12.417,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:12.417,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:12.468,000] [0m<inf> main: Time: 1.011 W[0m
+[00:00:12.468,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:12.468,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:12.519,000] [0m<inf> main: Time: 1.012 W[0m
+[00:00:12.519,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:12.519,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:12.570,000] [0m<inf> main: Time: 1.013 W[0m
+[00:00:12.570,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:12.570,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:12.621,000] [0m<inf> main: Time: 1.014 W[0m
+[00:00:12.621,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:12.621,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:12.672,000] [0m<inf> main: Time: 1.015 W[0m
+[00:00:12.672,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:12.672,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:12.723,000] [0m<inf> main: Time: 1.016 W[0m
+[00:00:12.723,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:12.723,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:12.774,000] [0m<inf> main: Time: 1.017 W[0m
+[00:00:12.774,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:12.774,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:12.825,000] [0m<inf> main: Time: 1.018 W[0m
+[00:00:12.825,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:12.825,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:12.876,000] [0m<inf> main: Time: 1.019 W[0m
+[00:00:12.876,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:12.876,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:12.927,000] [0m<inf> main: Time: 1.020 W[0m
+[00:00:12.927,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:12.927,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:12.978,000] [0m<inf> main: Time: 1.021 W[0m
+[00:00:12.978,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:12.978,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:13.029,000] [0m<inf> main: Time: 1.022 W[0m
+[00:00:13.029,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:13.029,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:13.080,000] [0m<inf> main: Time: 1.023 W[0m
+[00:00:13.080,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:13.080,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:13.131,000] [0m<inf> main: Time: 1.024 W[0m
+[00:00:13.131,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:13.131,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:13.182,000] [0m<inf> main: Time: 1.025 W[0m
+[00:00:13.182,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:13.182,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:13.233,000] [0m<inf> main: Time: 1.026 W[0m
+[00:00:13.233,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:13.233,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:13.284,000] [0m<inf> main: Time: 1.027 W[0m
+[00:00:13.284,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:13.284,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:13.335,000] [0m<inf> main: Time: 1.028 W[0m
+[00:00:13.335,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:13.335,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:13.386,000] [0m<inf> main: Time: 1.029 W[0m
+[00:00:13.386,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:13.386,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:13.437,000] [0m<inf> main: Time: 1.030 W[0m
+[00:00:13.437,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:13.437,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:13.488,000] [0m<inf> main: Time: 1.031 W[0m
+[00:00:13.488,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:13.488,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:13.539,000] [0m<inf> main: Time: 1.032 W[0m
+[00:00:13.539,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:13.539,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:13.590,000] [0m<inf> main: Time: 1.033 W[0m
+[00:00:13.590,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:13.590,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:13.641,000] [0m<inf> main: Time: 1.034 W[0m
+[00:00:13.641,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:13.641,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:13.692,000] [0m<inf> main: Time: 1.035 W[0m
+[00:00:13.692,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:13.692,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:13.743,000] [0m<inf> main: Time: 1.036 W[0m
+[00:00:13.743,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:13.743,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:13.794,000] [0m<inf> main: Time: 1.037 W[0m
+[00:00:13.794,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:13.794,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:13.845,000] [0m<inf> main: Time: 1.038 W[0m
+[00:00:13.845,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:13.845,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:13.896,000] [0m<inf> main: Time: 1.039 W[0m
+[00:00:13.896,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:13.896,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:13.947,000] [0m<inf> main: Time: 1.040 W[0m
+[00:00:13.947,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:13.947,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:13.998,000] [0m<inf> main: Time: 1.041 W[0m
+[00:00:13.998,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:13.998,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:14.049,000] [0m<inf> main: Time: 1.042 W[0m
+[00:00:14.049,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:14.049,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:14.100,000] [0m<inf> main: Time: 1.043 W[0m
+[00:00:14.100,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:14.100,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:14.151,000] [0m<inf> main: Time: 1.044 W[0m
+[00:00:14.151,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:14.151,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:14.202,000] [0m<inf> main: Time: 1.045 W[0m
+[00:00:14.202,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:14.202,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:14.253,000] [0m<inf> main: Time: 1.046 W[0m
+[00:00:14.253,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:14.253,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:14.304,000] [0m<inf> main: Time: 1.047 W[0m
+[00:00:14.304,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:14.304,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:14.355,000] [0m<inf> main: Time: 1.048 W[0m
+[00:00:14.355,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:14.355,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:14.406,000] [0m<inf> main: Time: 1.049 W[0m
+[00:00:14.406,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:14.406,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:14.457,000] [0m<inf> main: Time: 1.050 W[0m
+[00:00:14.457,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:14.457,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:14.508,000] [0m<inf> main: Time: 1.051 W[0m
+[00:00:14.508,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:14.508,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:14.559,000] [0m<inf> main: Time: 1.052 W[0m
+[00:00:14.559,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:14.559,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:14.610,000] [0m<inf> main: Time: 1.053 W[0m
+[00:00:14.610,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:14.610,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:14.661,000] [0m<inf> main: Time: 1.054 W[0m
+[00:00:14.661,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:14.661,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:14.712,000] [0m<inf> main: Time: 1.055 W[0m
+[00:00:14.712,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:14.712,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:14.763,000] [0m<inf> main: Time: 1.056 W[0m
+[00:00:14.763,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:14.763,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:14.814,000] [0m<inf> main: Time: 1.057 W[0m
+[00:00:14.814,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:14.814,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:14.865,000] [0m<inf> main: Time: 1.058 W[0m
+[00:00:14.865,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:14.865,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:14.916,000] [0m<inf> main: Time: 1.059 W[0m
+[00:00:14.916,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:14.916,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:14.967,000] [0m<inf> main: Time: 1.060 W[0m
+[00:00:14.967,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:14.967,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:15.018,000] [0m<inf> main: Time: 1.061 W[0m
+[00:00:15.018,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:15.018,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:15.069,000] [0m<inf> main: Time: 1.062 W[0m
+[00:00:15.069,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:15.069,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:15.120,000] [0m<inf> main: Time: 1.063 W[0m
+[00:00:15.120,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:15.120,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:15.171,000] [0m<inf> main: Time: 1.064 W[0m
+[00:00:15.171,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:15.171,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:15.222,000] [0m<inf> main: Time: 1.065 W[0m
+[00:00:15.222,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:15.222,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:15.273,000] [0m<inf> main: Time: 1.066 W[0m
+[00:00:15.273,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:15.273,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:15.324,000] [0m<inf> main: Time: 1.067 W[0m
+[00:00:15.324,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:15.324,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:15.375,000] [0m<inf> main: Time: 1.068 W[0m
+[00:00:15.375,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:15.375,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:15.426,000] [0m<inf> main: Time: 1.069 W[0m
+[00:00:15.426,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:15.426,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:15.477,000] [0m<inf> main: Time: 1.070 W[0m
+[00:00:15.477,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:15.477,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:15.528,000] [0m<inf> main: Time: 1.071 W[0m
+[00:00:15.528,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:15.528,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:15.579,000] [0m<inf> main: Time: 1.072 W[0m
+[00:00:15.579,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:15.579,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:15.630,000] [0m<inf> main: Time: 1.073 W[0m
+[00:00:15.630,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:15.630,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:15.681,000] [0m<inf> main: Time: 1.074 W[0m
+[00:00:15.681,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:15.681,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:15.732,000] [0m<inf> main: Time: 1.075 W[0m
+[00:00:15.732,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:15.732,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:15.783,000] [0m<inf> main: Time: 1.076 W[0m
+[00:00:15.783,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:15.783,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:15.834,000] [0m<inf> main: Time: 1.077 W[0m
+[00:00:15.834,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:15.834,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:15.885,000] [0m<inf> main: Time: 1.078 W[0m
+[00:00:15.885,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:15.885,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:15.936,000] [0m<inf> main: Time: 1.079 W[0m
+[00:00:15.936,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:15.936,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:15.987,000] [0m<inf> main: Time: 1.080 W[0m
+[00:00:15.987,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:15.987,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:16.038,000] [0m<inf> main: Time: 1.081 W[0m
+[00:00:16.038,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:16.038,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:16.089,000] [0m<inf> main: Time: 1.082 W[0m
+[00:00:16.089,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:16.089,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:16.140,000] [0m<inf> main: Time: 1.083 W[0m
+[00:00:16.140,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:16.140,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:16.191,000] [0m<inf> main: Time: 1.084 W[0m
+[00:00:16.191,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:16.191,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:16.242,000] [0m<inf> main: Time: 1.085 W[0m
+[00:00:16.242,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:16.242,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:16.293,000] [0m<inf> main: Time: 1.086 W[0m
+[00:00:16.293,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:16.293,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:16.344,000] [0m<inf> main: Time: 1.087 W[0m
+[00:00:16.344,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:16.344,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:16.395,000] [0m<inf> main: Time: 1.088 W[0m
+[00:00:16.395,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:16.395,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:16.446,000] [0m<inf> main: Time: 1.089 W[0m
+[00:00:16.446,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:16.446,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:16.497,000] [0m<inf> main: Time: 1.090 W[0m
+[00:00:16.497,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:16.497,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:16.548,000] [0m<inf> main: Time: 1.091 W[0m
+[00:00:16.548,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:16.548,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:16.599,000] [0m<inf> main: Time: 1.092 W[0m
+[00:00:16.599,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:16.599,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:16.650,000] [0m<inf> main: Time: 1.093 W[0m
+[00:00:16.650,000] [0m<inf> main: TDP Power: 64.12 W[0m
+[00:00:16.650,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:16.701,000] [0m<inf> main: Time: 1.094 W[0m
+[00:00:16.701,000] [0m<inf> main: TDP Power: 63.38 W[0m
+[00:00:16.701,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:16.752,000] [0m<inf> main: Time: 1.095 W[0m
+[00:00:16.752,000] [0m<inf> main: TDP Power: 64.12 W[0m
+[00:00:16.752,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:16.803,000] [0m<inf> main: Time: 1.096 W[0m
+[00:00:16.803,000] [0m<inf> main: TDP Power: 64.12 W[0m
+[00:00:16.803,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:16.854,000] [0m<inf> main: Time: 1.097 W[0m
+[00:00:16.854,000] [0m<inf> main: TDP Power: 64.12 W[0m
+[00:00:16.854,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:16.905,000] [0m<inf> main: Time: 1.098 W[0m
+[00:00:16.905,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:16.905,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:16.956,000] [0m<inf> main: Time: 1.099 W[0m
+[00:00:16.956,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:16.956,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:17.007,000] [0m<inf> main: Time: 1.100 W[0m
+[00:00:17.007,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:17.007,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:17.058,000] [0m<inf> main: Time: 1.101 W[0m
+[00:00:17.058,000] [0m<inf> main: TDP Power: 63.04 W[0m
+[00:00:17.058,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:17.109,000] [0m<inf> main: Time: 1.102 W[0m
+[00:00:17.109,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:17.109,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:17.160,000] [0m<inf> main: Time: 1.103 W[0m
+[00:00:17.160,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:17.160,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:17.211,000] [0m<inf> main: Time: 1.104 W[0m
+[00:00:17.211,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:17.211,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:17.262,000] [0m<inf> main: Time: 1.105 W[0m
+[00:00:17.262,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:17.262,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:17.313,000] [0m<inf> main: Time: 1.106 W[0m
+[00:00:17.313,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:17.313,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:17.364,000] [0m<inf> main: Time: 1.107 W[0m
+[00:00:17.364,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:17.364,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:17.415,000] [0m<inf> main: Time: 1.108 W[0m
+[00:00:17.415,000] [0m<inf> main: TDP Power: 63.04 W[0m
+[00:00:17.415,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:17.466,000] [0m<inf> main: Time: 1.109 W[0m
+[00:00:17.466,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:17.466,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:17.517,000] [0m<inf> main: Time: 1.110 W[0m
+[00:00:17.517,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:17.517,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:17.568,000] [0m<inf> main: Time: 1.111 W[0m
+[00:00:17.568,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:17.568,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:17.619,000] [0m<inf> main: Time: 1.112 W[0m
+[00:00:17.619,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:17.619,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:17.670,000] [0m<inf> main: Time: 1.113 W[0m
+[00:00:17.670,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:17.670,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:17.721,000] [0m<inf> main: Time: 1.114 W[0m
+[00:00:17.721,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:17.721,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:17.772,000] [0m<inf> main: Time: 1.115 W[0m
+[00:00:17.772,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:17.772,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:17.823,000] [0m<inf> main: Time: 1.116 W[0m
+[00:00:17.823,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:17.823,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:17.874,000] [0m<inf> main: Time: 1.117 W[0m
+[00:00:17.874,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:17.874,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:17.925,000] [0m<inf> main: Time: 1.118 W[0m
+[00:00:17.925,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:17.925,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:17.976,000] [0m<inf> main: Time: 1.119 W[0m
+[00:00:17.976,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:17.976,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:18.027,000] [0m<inf> main: Time: 1.120 W[0m
+[00:00:18.027,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:18.027,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:18.078,000] [0m<inf> main: Time: 1.121 W[0m
+[00:00:18.078,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:18.078,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:18.129,000] [0m<inf> main: Time: 1.122 W[0m
+[00:00:18.129,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:18.129,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:18.180,000] [0m<inf> main: Time: 1.123 W[0m
+[00:00:18.180,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:18.180,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:18.231,000] [0m<inf> main: Time: 1.124 W[0m
+[00:00:18.231,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:18.231,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:18.282,000] [0m<inf> main: Time: 1.125 W[0m
+[00:00:18.282,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:18.282,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:18.333,000] [0m<inf> main: Time: 1.126 W[0m
+[00:00:18.333,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:18.333,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:18.384,000] [0m<inf> main: Time: 1.127 W[0m
+[00:00:18.384,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:18.384,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:18.435,000] [0m<inf> main: Time: 1.128 W[0m
+[00:00:18.435,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:18.435,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:18.486,000] [0m<inf> main: Time: 1.129 W[0m
+[00:00:18.486,000] [0m<inf> main: TDP Power: 63.04 W[0m
+[00:00:18.486,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:18.537,000] [0m<inf> main: Time: 1.130 W[0m
+[00:00:18.537,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:18.537,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:18.588,000] [0m<inf> main: Time: 1.131 W[0m
+[00:00:18.588,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:18.588,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:18.639,000] [0m<inf> main: Time: 1.132 W[0m
+[00:00:18.639,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:18.639,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:18.690,000] [0m<inf> main: Time: 1.133 W[0m
+[00:00:18.690,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:18.690,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:18.741,000] [0m<inf> main: Time: 1.134 W[0m
+[00:00:18.741,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:18.741,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:18.792,000] [0m<inf> main: Time: 1.135 W[0m
+[00:00:18.792,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:18.792,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:18.843,000] [0m<inf> main: Time: 1.136 W[0m
+[00:00:18.843,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:18.843,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:18.894,000] [0m<inf> main: Time: 1.137 W[0m
+[00:00:18.894,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:18.894,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:18.945,000] [0m<inf> main: Time: 1.138 W[0m
+[00:00:18.945,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:18.945,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:18.996,000] [0m<inf> main: Time: 1.139 W[0m
+[00:00:18.996,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:18.996,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:19.047,000] [0m<inf> main: Time: 1.140 W[0m
+[00:00:19.047,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:19.047,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:19.098,000] [0m<inf> main: Time: 1.141 W[0m
+[00:00:19.098,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:19.098,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:19.149,000] [0m<inf> main: Time: 1.142 W[0m
+[00:00:19.149,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:19.149,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:19.200,000] [0m<inf> main: Time: 1.143 W[0m
+[00:00:19.200,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:19.200,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:19.251,000] [0m<inf> main: Time: 1.144 W[0m
+[00:00:19.251,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:19.251,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:19.302,000] [0m<inf> main: Time: 1.145 W[0m
+[00:00:19.302,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:19.302,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:19.353,000] [0m<inf> main: Time: 1.146 W[0m
+[00:00:19.353,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:19.353,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:19.404,000] [0m<inf> main: Time: 1.147 W[0m
+[00:00:19.404,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:19.404,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:19.455,000] [0m<inf> main: Time: 1.148 W[0m
+[00:00:19.455,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:19.455,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:19.506,000] [0m<inf> main: Time: 1.149 W[0m
+[00:00:19.506,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:19.506,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:19.557,000] [0m<inf> main: Time: 1.150 W[0m
+[00:00:19.557,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:19.557,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:19.608,000] [0m<inf> main: Time: 1.151 W[0m
+[00:00:19.608,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:19.608,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:19.659,000] [0m<inf> main: Time: 1.152 W[0m
+[00:00:19.659,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:19.659,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:19.710,000] [0m<inf> main: Time: 1.153 W[0m
+[00:00:19.710,000] [0m<inf> main: TDP Power: 63.04 W[0m
+[00:00:19.710,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:19.761,000] [0m<inf> main: Time: 1.154 W[0m
+[00:00:19.761,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:19.761,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:19.812,000] [0m<inf> main: Time: 1.155 W[0m
+[00:00:19.812,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:19.812,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:19.863,000] [0m<inf> main: Time: 1.156 W[0m
+[00:00:19.863,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:19.863,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:19.914,000] [0m<inf> main: Time: 1.157 W[0m
+[00:00:19.914,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:19.914,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:19.965,000] [0m<inf> main: Time: 1.158 W[0m
+[00:00:19.965,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:19.965,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:20.016,000] [0m<inf> main: Time: 1.159 W[0m
+[00:00:20.016,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:20.016,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:20.067,000] [0m<inf> main: Time: 1.160 W[0m
+[00:00:20.067,000] [0m<inf> main: TDP Power: 63.77 W[0m
+[00:00:20.067,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:20.118,000] [0m<inf> main: Time: 1.161 W[0m
+[00:00:20.118,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:20.118,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:20.169,000] [0m<inf> main: Time: 1.162 W[0m
+[00:00:20.169,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:20.169,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:20.220,000] [0m<inf> main: Time: 1.163 W[0m
+[00:00:20.220,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:20.220,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:20.271,000] [0m<inf> main: Time: 1.164 W[0m
+[00:00:20.271,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:20.271,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:20.322,000] [0m<inf> main: Time: 1.165 W[0m
+[00:00:20.322,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:20.322,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:20.373,000] [0m<inf> main: Time: 1.166 W[0m
+[00:00:20.373,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:20.373,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:20.424,000] [0m<inf> main: Time: 1.167 W[0m
+[00:00:20.424,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:20.424,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:20.475,000] [0m<inf> main: Time: 1.168 W[0m
+[00:00:20.475,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:20.475,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:20.526,000] [0m<inf> main: Time: 1.169 W[0m
+[00:00:20.526,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:20.526,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:20.577,000] [0m<inf> main: Time: 1.170 W[0m
+[00:00:20.577,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:20.577,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:20.628,000] [0m<inf> main: Time: 1.171 W[0m
+[00:00:20.628,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:20.628,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:20.679,000] [0m<inf> main: Time: 1.172 W[0m
+[00:00:20.679,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:20.679,000] [0m<inf> main: Board Power: 151.00 W[0m
+[00:00:20.730,000] [0m<inf> main: Time: 1.173 W[0m
+[00:00:20.730,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:20.730,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:20.781,000] [0m<inf> main: Time: 1.174 W[0m
+[00:00:20.781,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:20.781,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:20.832,000] [0m<inf> main: Time: 1.175 W[0m
+[00:00:20.832,000] [0m<inf> main: TDP Power: 62.95 W[0m
+[00:00:20.832,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:20.883,000] [0m<inf> main: Time: 1.176 W[0m
+[00:00:20.883,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:20.883,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:20.934,000] [0m<inf> main: Time: 1.177 W[0m
+[00:00:20.934,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:20.934,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:20.985,000] [0m<inf> main: Time: 1.178 W[0m
+[00:00:20.985,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:20.985,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:21.036,000] [0m<inf> main: Time: 1.179 W[0m
+[00:00:21.036,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:21.036,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:21.087,000] [0m<inf> main: Time: 1.180 W[0m
+[00:00:21.087,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:21.087,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:21.138,000] [0m<inf> main: Time: 1.181 W[0m
+[00:00:21.138,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:21.138,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:21.189,000] [0m<inf> main: Time: 1.182 W[0m
+[00:00:21.189,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:21.189,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:21.240,000] [0m<inf> main: Time: 1.183 W[0m
+[00:00:21.240,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:21.240,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:21.291,000] [0m<inf> main: Time: 1.184 W[0m
+[00:00:21.291,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:21.291,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:21.342,000] [0m<inf> main: Time: 1.185 W[0m
+[00:00:21.342,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:21.342,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:21.393,000] [0m<inf> main: Time: 1.186 W[0m
+[00:00:21.393,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:21.393,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:21.444,000] [0m<inf> main: Time: 1.187 W[0m
+[00:00:21.444,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:21.444,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:21.495,000] [0m<inf> main: Time: 1.188 W[0m
+[00:00:21.495,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:21.495,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:21.546,000] [0m<inf> main: Time: 1.189 W[0m
+[00:00:21.546,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:21.546,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:21.597,000] [0m<inf> main: Time: 1.190 W[0m
+[00:00:21.597,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:21.597,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:21.648,000] [0m<inf> main: Time: 1.191 W[0m
+[00:00:21.648,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:21.648,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:21.699,000] [0m<inf> main: Time: 1.192 W[0m
+[00:00:21.699,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:21.699,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:21.750,000] [0m<inf> main: Time: 1.193 W[0m
+[00:00:21.750,000] [0m<inf> main: TDP Power: 63.68 W[0m
+[00:00:21.750,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:21.801,000] [0m<inf> main: Time: 1.194 W[0m
+[00:00:21.801,000] [0m<inf> main: TDP Power: 46.85 W[0m
+[00:00:21.801,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:21.852,000] [0m<inf> main: Time: 1.195 W[0m
+[00:00:21.852,000] [0m<inf> main: TDP Power: 46.85 W[0m
+[00:00:21.852,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:21.903,000] [0m<inf> main: Time: 1.196 W[0m
+[00:00:21.903,000] [0m<inf> main: TDP Power: 46.85 W[0m
+[00:00:21.903,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:21.954,000] [0m<inf> main: Time: 1.197 W[0m
+[00:00:21.954,000] [0m<inf> main: TDP Power: 46.85 W[0m
+[00:00:21.954,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:22.005,000] [0m<inf> main: Time: 1.198 W[0m
+[00:00:22.005,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:22.005,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:22.056,000] [0m<inf> main: Time: 1.199 W[0m
+[00:00:22.056,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:22.056,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:22.107,000] [0m<inf> main: Time: 1.200 W[0m
+[00:00:22.107,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:22.107,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:22.158,000] [0m<inf> main: Time: 1.201 W[0m
+[00:00:22.158,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:22.158,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:22.209,000] [0m<inf> main: Time: 1.202 W[0m
+[00:00:22.209,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:22.209,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:22.260,000] [0m<inf> main: Time: 1.203 W[0m
+[00:00:22.260,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:22.260,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:22.311,000] [0m<inf> main: Time: 1.204 W[0m
+[00:00:22.311,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:22.311,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:22.362,000] [0m<inf> main: Time: 1.205 W[0m
+[00:00:22.362,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:22.362,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:22.413,000] [0m<inf> main: Time: 1.206 W[0m
+[00:00:22.413,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:22.413,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:22.464,000] [0m<inf> main: Time: 1.207 W[0m
+[00:00:22.464,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:22.464,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:22.515,000] [0m<inf> main: Time: 1.208 W[0m
+[00:00:22.515,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:22.515,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:22.566,000] [0m<inf> main: Time: 1.209 W[0m
+[00:00:22.566,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:22.566,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:22.617,000] [0m<inf> main: Time: 1.210 W[0m
+[00:00:22.617,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:22.617,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:22.668,000] [0m<inf> main: Time: 1.211 W[0m
+[00:00:22.668,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:22.668,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:22.719,000] [0m<inf> main: Time: 1.212 W[0m
+[00:00:22.719,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:22.719,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:22.770,000] [0m<inf> main: Time: 1.213 W[0m
+[00:00:22.770,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:22.770,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:22.821,000] [0m<inf> main: Time: 1.214 W[0m
+[00:00:22.821,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:22.821,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:22.872,000] [0m<inf> main: Time: 1.215 W[0m
+[00:00:22.872,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:22.872,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:22.923,000] [0m<inf> main: Time: 1.216 W[0m
+[00:00:22.923,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:22.923,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:22.974,000] [0m<inf> main: Time: 1.217 W[0m
+[00:00:22.974,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:22.974,000] [0m<inf> main: Board Power: 152.00 W[0m
+[00:00:23.025,000] [0m<inf> main: Time: 1.218 W[0m
+[00:00:23.025,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:23.025,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:23.076,000] [0m<inf> main: Time: 1.219 W[0m
+[00:00:23.076,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:23.076,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:23.127,000] [0m<inf> main: Time: 1.220 W[0m
+[00:00:23.127,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:23.127,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:23.178,000] [0m<inf> main: Time: 1.221 W[0m
+[00:00:23.178,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:23.178,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:23.229,000] [0m<inf> main: Time: 1.222 W[0m
+[00:00:23.229,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:23.229,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:23.280,000] [0m<inf> main: Time: 1.223 W[0m
+[00:00:23.280,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:23.280,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:23.331,000] [0m<inf> main: Time: 1.224 W[0m
+[00:00:23.331,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:23.331,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:23.382,000] [0m<inf> main: Time: 1.225 W[0m
+[00:00:23.382,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:23.382,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:23.433,000] [0m<inf> main: Time: 1.226 W[0m
+[00:00:23.433,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:23.433,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:23.484,000] [0m<inf> main: Time: 1.227 W[0m
+[00:00:23.484,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:23.484,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:23.535,000] [0m<inf> main: Time: 1.228 W[0m
+[00:00:23.535,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:23.535,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:23.586,000] [0m<inf> main: Time: 1.229 W[0m
+[00:00:23.586,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:23.586,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:23.637,000] [0m<inf> main: Time: 1.230 W[0m
+[00:00:23.637,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:23.637,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:23.688,000] [0m<inf> main: Time: 1.231 W[0m
+[00:00:23.688,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:23.688,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:23.739,000] [0m<inf> main: Time: 1.232 W[0m
+[00:00:23.739,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:23.739,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:23.790,000] [0m<inf> main: Time: 1.233 W[0m
+[00:00:23.790,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:23.790,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:23.841,000] [0m<inf> main: Time: 1.234 W[0m
+[00:00:23.841,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:23.841,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:23.892,000] [0m<inf> main: Time: 1.235 W[0m
+[00:00:23.892,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:23.892,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:23.943,000] [0m<inf> main: Time: 1.236 W[0m
+[00:00:23.943,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:23.943,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:23.994,000] [0m<inf> main: Time: 1.237 W[0m
+[00:00:23.994,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:23.994,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:24.045,000] [0m<inf> main: Time: 1.238 W[0m
+[00:00:24.045,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:24.045,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:24.096,000] [0m<inf> main: Time: 1.239 W[0m
+[00:00:24.096,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:24.096,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:24.147,000] [0m<inf> main: Time: 1.240 W[0m
+[00:00:24.147,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:24.147,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:24.198,000] [0m<inf> main: Time: 1.241 W[0m
+[00:00:24.198,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:24.198,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:24.249,000] [0m<inf> main: Time: 1.242 W[0m
+[00:00:24.249,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:24.249,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:24.300,000] [0m<inf> main: Time: 1.243 W[0m
+[00:00:24.300,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:24.300,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:24.351,000] [0m<inf> main: Time: 1.244 W[0m
+[00:00:24.351,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:24.351,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:24.402,000] [0m<inf> main: Time: 1.245 W[0m
+[00:00:24.402,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:24.402,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:24.453,000] [0m<inf> main: Time: 1.246 W[0m
+[00:00:24.453,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:24.453,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:24.504,000] [0m<inf> main: Time: 1.247 W[0m
+[00:00:24.504,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:24.504,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:24.555,000] [0m<inf> main: Time: 1.248 W[0m
+[00:00:24.555,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:24.555,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:24.606,000] [0m<inf> main: Time: 1.249 W[0m
+[00:00:24.606,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:24.606,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:24.657,000] [0m<inf> main: Time: 1.250 W[0m
+[00:00:24.657,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:24.657,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:24.708,000] [0m<inf> main: Time: 1.251 W[0m
+[00:00:24.708,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:24.708,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:24.759,000] [0m<inf> main: Time: 1.252 W[0m
+[00:00:24.759,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:24.759,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:24.810,000] [0m<inf> main: Time: 1.253 W[0m
+[00:00:24.810,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:24.810,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:24.861,000] [0m<inf> main: Time: 1.254 W[0m
+[00:00:24.861,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:24.861,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:24.912,000] [0m<inf> main: Time: 1.255 W[0m
+[00:00:24.912,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:24.912,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:24.963,000] [0m<inf> main: Time: 1.256 W[0m
+[00:00:24.963,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:24.963,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:25.014,000] [0m<inf> main: Time: 1.257 W[0m
+[00:00:25.014,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:25.014,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:25.065,000] [0m<inf> main: Time: 1.258 W[0m
+[00:00:25.065,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:25.065,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:25.116,000] [0m<inf> main: Time: 1.259 W[0m
+[00:00:25.116,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:25.116,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:25.167,000] [0m<inf> main: Time: 1.260 W[0m
+[00:00:25.167,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:25.167,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:25.218,000] [0m<inf> main: Time: 1.261 W[0m
+[00:00:25.218,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:25.218,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:25.269,000] [0m<inf> main: Time: 1.262 W[0m
+[00:00:25.269,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:25.269,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:25.320,000] [0m<inf> main: Time: 1.263 W[0m
+[00:00:25.320,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:25.320,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:25.371,000] [0m<inf> main: Time: 1.264 W[0m
+[00:00:25.371,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:25.371,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:25.422,000] [0m<inf> main: Time: 1.265 W[0m
+[00:00:25.422,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:25.422,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:25.473,000] [0m<inf> main: Time: 1.266 W[0m
+[00:00:25.473,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:25.473,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:25.524,000] [0m<inf> main: Time: 1.267 W[0m
+[00:00:25.524,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:25.524,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:25.575,000] [0m<inf> main: Time: 1.268 W[0m
+[00:00:25.575,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:25.575,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:25.626,000] [0m<inf> main: Time: 1.269 W[0m
+[00:00:25.626,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:25.626,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:25.677,000] [0m<inf> main: Time: 1.270 W[0m
+[00:00:25.677,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:25.677,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:25.728,000] [0m<inf> main: Time: 1.271 W[0m
+[00:00:25.728,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:25.728,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:25.779,000] [0m<inf> main: Time: 1.272 W[0m
+[00:00:25.779,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:25.779,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:25.830,000] [0m<inf> main: Time: 1.273 W[0m
+[00:00:25.830,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:25.830,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:25.881,000] [0m<inf> main: Time: 1.274 W[0m
+[00:00:25.881,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:25.881,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:25.932,000] [0m<inf> main: Time: 1.275 W[0m
+[00:00:25.932,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:25.932,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:25.983,000] [0m<inf> main: Time: 1.276 W[0m
+[00:00:25.983,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:25.983,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:26.034,000] [0m<inf> main: Time: 1.277 W[0m
+[00:00:26.034,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:26.034,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:26.085,000] [0m<inf> main: Time: 1.278 W[0m
+[00:00:26.085,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:26.085,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:26.136,000] [0m<inf> main: Time: 1.279 W[0m
+[00:00:26.136,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:26.136,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:26.187,000] [0m<inf> main: Time: 1.280 W[0m
+[00:00:26.187,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:26.187,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:26.238,000] [0m<inf> main: Time: 1.281 W[0m
+[00:00:26.238,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:26.238,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:26.289,000] [0m<inf> main: Time: 1.282 W[0m
+[00:00:26.289,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:26.289,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:26.340,000] [0m<inf> main: Time: 1.283 W[0m
+[00:00:26.340,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:26.340,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:26.391,000] [0m<inf> main: Time: 1.284 W[0m
+[00:00:26.391,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:26.391,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:26.442,000] [0m<inf> main: Time: 1.285 W[0m
+[00:00:26.442,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:26.442,000] [0m<inf> main: Board Power: 132.00 W[0m
+[00:00:26.493,000] [0m<inf> main: Time: 1.286 W[0m
+[00:00:26.493,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:26.493,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:26.544,000] [0m<inf> main: Time: 1.287 W[0m
+[00:00:26.544,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:26.544,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:26.595,000] [0m<inf> main: Time: 1.288 W[0m
+[00:00:26.595,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:26.595,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:26.646,000] [0m<inf> main: Time: 1.289 W[0m
+[00:00:26.646,000] [0m<inf> main: TDP Power: 47.17 W[0m
+[00:00:26.646,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:26.697,000] [0m<inf> main: Time: 1.290 W[0m
+[00:00:26.697,000] [0m<inf> main: TDP Power: 45.69 W[0m
+[00:00:26.697,000] [0m<inf> main: Board Power: 131.00 W[0m
+[00:00:26.748,000] [0m<inf> main: === End CSM Telemetry ===[0m

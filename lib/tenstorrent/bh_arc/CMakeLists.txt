@@ -49,6 +49,7 @@ zephyr_library_sources(
   spi_eeprom.c
   spi_flash_buf.c
   timer.c
+  throttler.c
 )
 
 zephyr_library_sources_ifdef(CONFIG_TT_SHELL tt_shell.c)

@@ -12,6 +12,7 @@
 #include "status_reg.h"
 #include "telemetry.h"
 #include "timer.h"
+#include "throttler.h"
 
 #include <stdint.h>
 
@@ -25,13 +26,54 @@
 #include <zephyr/drivers/watchdog.h>
 #include <zephyr/drivers/misc/bh_fwtable.h>
 #include <zephyr/storage/flash_map.h>
+#include <zephyr/drivers/clock_control.h>
+#include <zephyr/drivers/clock_control/clock_control_tt_bh.h>
 
 LOG_MODULE_REGISTER(main, CONFIG_TT_APP_LOG_LEVEL);
 
 static const struct device *const wdt0 = DEVICE_DT_GET(DT_NODELABEL(wdt0));
 static const struct device *const fwtable_dev = DEVICE_DT_GET(DT_NODELABEL(fwtable));
+static const struct device *const pll = DEVICE_DT_GET(DT_NODELABEL(pll0));
 
 BUILD_ASSERT(FIXED_PARTITION_EXISTS(cmfw), "cmfw fixed-partition does not exist");
+
+/**
+ * @brief Read and log all telemetry values from CSM memory
+ */
+static void ReadAllTelemetryFromCSM(void)
+{
+	union {
+		float f;
+		uint32_t u;
+	} uint_to_float;
+
+	LOG_INF("=== CSM Telemetry Values ===");
+
+	for (int i = 0; i < 500; ++i) {
+		/* Read TDP Power */
+		uint64_t clk = ReadTelemetryFromCSM(0x0000 + (i * 12));
+		LOG_INF("Time: %.3f W", (double)clk / (double)50000000ULL);
+
+		uint_to_float.u = ReadTelemetryFromCSM(0x0004 + (i * 12));
+		LOG_INF("TDP Power: %.2f W", (double)uint_to_float.f);
+
+		/* Read Board Power */
+		uint_to_float.u = ReadTelemetryFromCSM(0x0008 + (i * 12));
+		LOG_INF("Board Power: %.2f W", (double)uint_to_float.f);
+
+		/* Read TDP Limit */
+		//uint_to_float.u = ReadTelemetryFromCSM(0x000C + (i * 12));
+		//LOG_INF("TDP Limit: %.2f W", (double)uint_to_float.f);
+
+		/* Read Board Power Limit */
+		//uint_to_float.u = ReadTelemetryFromCSM(0x0010 + (i * 12));
+		//LOG_INF("Board Power Limit: %.2f W", (double)uint_to_float.f);
+
+		k_msleep(50);
+	}
+
+	LOG_INF("=== End CSM Telemetry ===");
+}
 
 int main(void)
 {
@@ -76,6 +118,17 @@ int main(void)
 	}
 
 	Dm2CmReadyRequest();
+
+	k_msleep(100);
+	clock_control_set_rate(pll, (clock_control_subsys_t)CLOCK_CONTROL_TT_BH_CLOCK_AICLK, (clock_control_subsys_rate_t)1350);
+	k_msleep(100);
+	clock_control_set_rate(pll, (clock_control_subsys_t)CLOCK_CONTROL_TT_BH_CLOCK_AICLK, (clock_control_subsys_rate_t)800);
+	k_msleep(100);
+	clock_control_set_rate(pll, (clock_control_subsys_t)CLOCK_CONTROL_TT_BH_CLOCK_AICLK, (clock_control_subsys_rate_t)1350);
+	k_msleep(100);
+	clock_control_set_rate(pll, (clock_control_subsys_t)CLOCK_CONTROL_TT_BH_CLOCK_AICLK, (clock_control_subsys_rate_t)800);
+	k_msleep(100);
+	ReadAllTelemetryFromCSM();
 
 	while (1) {
 		sys_trace_named_event("main_loop", TimerTimestamp(), 0);
