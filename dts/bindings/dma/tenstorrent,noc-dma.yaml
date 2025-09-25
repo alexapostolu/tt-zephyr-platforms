@@ -1,0 +1,50 @@
+# Copyright (c) 2025 Tenstorrent AI ULC
+# SPDX-License-Identifier: Apache-2.0
+
+compatible: "tenstorrent,noc-dma"
+
+description: |
+  Tenstorrent Network-on-Chip (NOC) DMA Controller
+  
+  The NOC DMA controller provides high-performance DMA transfers
+  between memory regions and peripherals on the Tenstorrent chip.
+
+include: [base.yaml, dma-controller.yaml]
+
+properties:
+  reg:
+    required: true
+    description: Register base address and size
+
+  interrupts:
+    required: true
+    description: DMA completion interrupt
+
+  "#dma-cells":
+    const: 1
+    description: |
+      DMA clients must specify the DMA channel number.
+      
+      Example:
+        dma-names = "tx", "rx";
+        dmas = <&noc_dma 0>, <&noc_dma 1>;
+
+  dma-channels:
+    type: int
+    default: 8
+    description: Number of DMA channels supported
+
+  dma-buf-addr-alignment:
+    type: int
+    default: 4
+    description: Required buffer address alignment in bytes
+
+  dma-buf-size-alignment:
+    type: int
+    default: 4
+    description: Required buffer size alignment in bytes
+
+  dma-copy-alignment:
+    type: int
+    default: 4
+    description: Minimum data copy alignment in bytes

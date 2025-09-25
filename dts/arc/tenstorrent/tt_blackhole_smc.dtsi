@@ -312,6 +312,11 @@
 		status = "disabled";
 	};
 
+	noc_dma: noc_dma@1234000 {
+		compatible = "tenstorrent,noc-dma";
+		reg = <0x12340000 0x1000>;
+	};
+
 	sysclk: system-clock {
 		compatible = "fixed-clock";
 		clock-frequency = <500000000>;
