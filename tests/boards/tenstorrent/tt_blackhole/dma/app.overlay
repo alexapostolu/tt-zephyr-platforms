@@ -1,0 +1,13 @@
+/*
+ * Copyright (c) 2025 Tenstorrent AI ULC
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/ {
+	noc_dma: noc_dma@12340000 {
+		compatible = "tenstorrent,noc-dma";
+		reg = <0x12340000 0x1000>;
+		interrupts = <42 0>;
+		status = "okay";
+	};
+};
