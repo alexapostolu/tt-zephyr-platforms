@@ -8,6 +8,7 @@
 #include <string.h>
 #include <zephyr/device.h>
 #include <zephyr/drivers/dma.h>
+#include <zephyr/drivers/dma/dma_arc_hs.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/kernel.h>
 #include <zephyr/sys/barrier.h>
@@ -929,6 +930,58 @@ static void dma_arc_hs_completion_work_handler(struct k_work *work)
 	} else {
 		LOG_DBG("No active transfers, work handler idle");
 	}
+}
+
+int dma_arc_hs_transfer(const struct device *dev, uint32_t channel, const void *src, void *dst,
+			size_t len)
+{
+	struct dma_config cfg = {0};
+	struct dma_block_config blk = {0};
+	struct dma_status stat;
+	int rc;
+
+	if (!device_is_ready(dev)) {
+		LOG_ERR("DMA device not ready");
+		return -ENODEV;
+	}
+
+	if (len == 0) {
+		return 0;
+	}
+
+	if (((uintptr_t)src & 3) || ((uintptr_t)dst & 3)) {
+		LOG_ERR("src/dst not 4-byte aligned");
+		return -EINVAL;
+	}
+
+	if (channel >= ((const struct arc_dma_config *)dev->config)->channels) {
+		LOG_ERR("Invalid channel %u", channel);
+		return -EINVAL;
+	}
+
+	blk.source_address = (dma_addr_t)(uintptr_t)src;
+	blk.dest_address = (dma_addr_t)(uintptr_t)dst;
+	blk.block_size = len;
+
+	cfg.channel_direction = MEMORY_TO_MEMORY;
+	cfg.head_block = &blk;
+	cfg.block_count = 1;
+
+	rc = dma_config(dev, channel, &cfg);
+	if (rc < 0) {
+		return rc;
+	}
+
+	rc = dma_start(dev, channel);
+	if (rc < 0) {
+		return rc;
+	}
+
+	while (dma_get_status(dev, channel, &stat) == 0 && stat.busy) {
+		k_msleep(1);
+	}
+
+	return 0;
 }
 
 static const struct dma_driver_api dma_arc_hs_api = {
