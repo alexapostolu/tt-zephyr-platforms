@@ -14,6 +14,7 @@
 #include <math.h>  /* for ldexp */
 #include <float.h> /* for FLT_MAX */
 #include <stdint.h>
+#include <string.h> /* for memcpy */
 
 #include <tenstorrent/smc_msg.h>
 #include <tenstorrent/msgqueue.h>
@@ -23,6 +24,8 @@
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/drivers/misc/bh_fwtable.h>
+#include <zephyr/drivers/i2c.h>
+#include <zephyr/devicetree.h>
 
 #define LINEAR_FORMAT_CONSTANT (1 << 9)
 #define SCALE_LOOP             0.335f
@@ -73,6 +76,58 @@ LOG_MODULE_REGISTER(regulator);
 static uint8_t vout_cmd_source = VoutCommand;
 static const struct device *const fwtable_dev = DEVICE_DT_GET(DT_NODELABEL(fwtable));
 
+//static const struct device *const i2c0_dev = DEVICE_DT_GET(DT_NODELABEL(i2c0));
+static const struct device *const i2c1_dev = DEVICE_DT_GET(DT_NODELABEL(i2c1));
+//static const struct device *const i2c2_dev = DEVICE_DT_GET(DT_NODELABEL(i2c2));
+
+/* I2C Read-Modify-Write-Verify helper function */
+static uint32_t i2c_rmwv(uint16_t slave_addr, uint16_t command, 
+                         uint32_t command_byte_size, const uint8_t *p_data, 
+                         const uint8_t *p_mask, uint32_t data_byte_size)
+{
+        uint8_t buffer[data_byte_size];
+        uint8_t cmd = (uint8_t)command;
+        int ret;
+
+        if (!i2c1_dev || !device_is_ready(i2c1_dev)) {
+                return -ENODEV;
+        }
+
+        /* Read */
+        ret = i2c_write_read(i2c1_dev, slave_addr, &cmd, command_byte_size, buffer, data_byte_size);
+        if (ret != 0) {
+                return ret;
+        }
+
+        /* Modify */
+        for (uint32_t i = 0; i < data_byte_size; i++) {
+                buffer[i] = (buffer[i] & ~p_mask[i]) | (p_data[i] & p_mask[i]);
+        }
+
+        /* Write */
+        uint8_t cmd_data[command_byte_size + data_byte_size];
+        memcpy(cmd_data, &command, command_byte_size);
+        memcpy(cmd_data + command_byte_size, buffer, data_byte_size);
+        ret = i2c_write(i2c1_dev, cmd_data, sizeof(cmd_data), slave_addr);
+        if (ret != 0) {
+                return ret;
+        }
+
+        /* Verify */
+        ret = i2c_write_read(i2c1_dev, slave_addr, &cmd, command_byte_size, buffer, data_byte_size);
+        if (ret != 0) {
+                return ret;
+        }
+
+        for (uint32_t i = 0; i < data_byte_size; i++) {
+                if ((buffer[i] & p_mask[i]) != (p_data[i] & p_mask[i])) {
+                        return -EIO; /* Verification failed */
+                }
+        }
+
+        return 0;
+}
+
 static float ConvertLinear11ToFloat(uint16_t value)
 {
 	int16_t exponent = (value >> 11) & 0x1f;
@@ -88,73 +143,79 @@ static float ConvertLinear11ToFloat(uint16_t value)
 /* The function returns the core current in A. */
 float GetVcoreCurrent(void)
 {
-	I2CInit(I2CMst, P0V8_VCORE_ADDR, I2CFastMode, PMBUS_MST_ID);
-	uint16_t iout;
+        uint16_t iout;
+        uint8_t cmd = READ_IOUT;
 
-	I2CReadBytes(PMBUS_MST_ID, READ_IOUT, PMBUS_CMD_BYTE_SIZE, (uint8_t *)&iout,
-		     READ_IOUT_DATA_BYTE_SIZE, PMBUS_FLIP_BYTES);
-	return ConvertLinear11ToFloat(iout);
+        if (i2c_write_read(i2c1_dev, P0V8_VCORE_ADDR, &cmd, 1, (uint8_t *)&iout, 2) != 0) {
+                return 0.0f;
+        }
+
+        return ConvertLinear11ToFloat(iout);
 }
 
 /* The function returns the core power in W. */
 float GetVcorePower(void)
 {
-	I2CInit(I2CMst, P0V8_VCORE_ADDR, I2CFastMode, PMBUS_MST_ID);
-	uint16_t pout;
+        uint16_t pout;
+        uint8_t cmd = READ_POUT;
 
-	I2CReadBytes(PMBUS_MST_ID, READ_POUT, PMBUS_CMD_BYTE_SIZE, (uint8_t *)&pout,
-		     READ_POUT_DATA_BYTE_SIZE, PMBUS_FLIP_BYTES);
-	return ConvertLinear11ToFloat(pout);
+        if (i2c_write_read(i2c1_dev, P0V8_VCORE_ADDR, &cmd, 1, (uint8_t *)&pout, 2) != 0) {
+                return 0.0f;
+        }
+
+        return ConvertLinear11ToFloat(pout);
 }
 
 static void set_max20730(uint32_t slave_addr, uint32_t voltage_in_mv, float rfb1, float rfb2)
 {
-	I2CInit(I2CMst, slave_addr, I2CFastMode, PMBUS_MST_ID);
-	float vref = voltage_in_mv / (1 + rfb1 / rfb2);
-	uint16_t vout_cmd = vref * LINEAR_FORMAT_CONSTANT * 0.001f;
+        float vref = voltage_in_mv / (1 + rfb1 / rfb2);
+        uint16_t vout_cmd = vref * LINEAR_FORMAT_CONSTANT * 0.001f;
+        uint8_t cmd_data[3] = {VOUT_COMMAND, (uint8_t)vout_cmd, (uint8_t)(vout_cmd >> 8)};
 
-	I2CWriteBytes(PMBUS_MST_ID, VOUT_COMMAND, PMBUS_CMD_BYTE_SIZE, (uint8_t *)&vout_cmd,
-		      VOUT_COMMAND_DATA_BYTE_SIZE);
+        i2c_write(i2c1_dev, cmd_data, sizeof(cmd_data), slave_addr);
 
-	/* delay to flush i2c transaction and voltage change */
-	WaitUs(250);
+        /* delay to flush i2c transaction and voltage change */
+	k_usleep(250);
 }
 
 static void set_mpm3695(uint32_t slave_addr, uint32_t voltage_in_mv, float rfb1, float rfb2)
 {
-	I2CInit(I2CMst, slave_addr, I2CFastMode, PMBUS_MST_ID);
-	uint16_t vout_cmd = voltage_in_mv * 0.5f / SCALE_LOOP / (1 + rfb1 / rfb2);
+        uint16_t vout_cmd = voltage_in_mv * 0.5f / SCALE_LOOP / (1 + rfb1 / rfb2);
+        uint8_t cmd_data[3] = {VOUT_COMMAND, (uint8_t)vout_cmd, (uint8_t)(vout_cmd >> 8)};
 
-	I2CWriteBytes(PMBUS_MST_ID, VOUT_COMMAND, PMBUS_CMD_BYTE_SIZE, (uint8_t *)&vout_cmd,
-		      VOUT_COMMAND_DATA_BYTE_SIZE);
+        i2c_write(i2c1_dev, cmd_data, sizeof(cmd_data), slave_addr);
 
-	/* delay to flush i2c transaction and voltage change */
-	WaitUs(250);
+        /* delay to flush i2c transaction and voltage change */
+	k_usleep(250);
 }
 
 /* Set MAX20816 voltage using I2C, MAX20816 is used for Vcore and Vcorem */
 static void i2c_set_max20816(uint32_t slave_addr, uint32_t voltage_in_mv)
 {
-	I2CInit(I2CMst, slave_addr, I2CFastMode, PMBUS_MST_ID);
-	uint16_t vout_cmd = 2 * voltage_in_mv;
+        uint16_t vout_cmd = 2 * voltage_in_mv;
+        uint8_t cmd_data[3] = {VOUT_COMMAND, (uint8_t)vout_cmd, (uint8_t)(vout_cmd >> 8)};
 
-	I2CWriteBytes(PMBUS_MST_ID, VOUT_COMMAND, PMBUS_CMD_BYTE_SIZE, (uint8_t *)&vout_cmd,
-		      VOUT_COMMAND_DATA_BYTE_SIZE);
+        i2c_write(i2c1_dev, cmd_data, sizeof(cmd_data), slave_addr);
 
-	/* 100us to flush the tx of i2c + 150us to cover voltage switch from 0.65V to 0.95V with
-	 * 50us of margin
-	 */
-	WaitUs(250);
+        /* 100us to flush the tx of i2c + 150us to cover voltage switch from 0.65V to 0.95V with
+         * 50us of margin
+         */
+	k_usleep(250);
 }
 
 /* Returns MAX20816 output volage in mV. */
 static float i2c_get_max20816(uint32_t slave_addr)
 {
-	I2CInit(I2CMst, slave_addr, I2CFastMode, PMBUS_MST_ID);
 	uint16_t vout_cmd = 0;
+	uint8_t cmd = READ_VOUT;
+	int ret;
 
-	I2CReadBytes(PMBUS_MST_ID, READ_VOUT, PMBUS_CMD_BYTE_SIZE, (uint8_t *)&vout_cmd,
-		     READ_VOUT_DATA_BYTE_SIZE, PMBUS_FLIP_BYTES);
+	ret = i2c_write_read(i2c1_dev, slave_addr, &cmd, sizeof(cmd), 
+			     (uint8_t *)&vout_cmd, sizeof(vout_cmd));
+	if (ret != 0) {
+		LOG_ERR("I2C read failed: %d", ret);
+		return 0.0f;
+	}
 
 	return vout_cmd * 0.5f;
 }
@@ -198,19 +259,33 @@ void set_gddr_vddr(PcbType board_type, uint32_t voltage_in_mv)
 
 void SwitchVoutControl(VoltageCmdSource source)
 {
-	I2CInit(I2CMst, P0V8_VCORE_ADDR, I2CFastMode, PMBUS_MST_ID);
 	OperationBits operation;
+	uint8_t cmd = OPERATION;
+	int ret;
 
-	I2CReadBytes(PMBUS_MST_ID, OPERATION, PMBUS_CMD_BYTE_SIZE, (uint8_t *)&operation,
-		     OPERATION_DATA_BYTE_SIZE, PMBUS_FLIP_BYTES);
+	/* Read current operation register */
+	ret = i2c_write_read(i2c1_dev, P0V8_VCORE_ADDR, &cmd, 1, 
+			     (uint8_t *)&operation, sizeof(operation));
+	if (ret != 0) {
+		LOG_ERR("I2C read operation register failed: %d", ret);
+		return;
+	}
+
+	/* Modify operation settings */
 	operation.transition_control =
 		1; /* copy vout command when control is passed from AVSBus to PMBus */
 	operation.voltage_command_source = source;
-	I2CWriteBytes(PMBUS_MST_ID, OPERATION, PMBUS_CMD_BYTE_SIZE, (uint8_t *)&operation,
-		      OPERATION_DATA_BYTE_SIZE);
+
+	/* Write back the modified operation register */
+	uint8_t cmd_data[2] = {OPERATION, *(uint8_t *)&operation};
+	ret = i2c_write(i2c1_dev, cmd_data, sizeof(cmd_data), P0V8_VCORE_ADDR);
+	if (ret != 0) {
+		LOG_ERR("I2C write operation register failed: %d", ret);
+		return;
+	}
 
 	/* 100us to flush the tx of i2c */
-	WaitUs(100);
+	k_usleep(100);
 	vout_cmd_source = source;
 }
 
@@ -240,8 +315,6 @@ uint32_t RegulatorInit(PcbType board_type)
 			const RegulatorConfig *regulator_config =
 				regulators_config->regulator_config + i;
 
-			I2CInit(I2CMst, regulator_config->address, I2CFastMode, PMBUS_MST_ID);
-
 			for (uint32_t j = 0; j < regulator_config->count; j++) {
 				const RegulatorData *regulator_data =
 					&regulator_config->regulator_data[j];
@@ -249,9 +322,10 @@ uint32_t RegulatorInit(PcbType board_type)
 				LOG_DBG("Regulator %#x init on cmd %#x", regulator_config->address,
 					regulator_data->cmd);
 
-				i2c_error = I2CRMWV(PMBUS_MST_ID, regulator_data->cmd,
-						    PMBUS_CMD_BYTE_SIZE, regulator_data->data,
-						    regulator_data->mask, regulator_data->size);
+				
+				i2c_error = i2c_rmwv(regulator_config->address, regulator_data->cmd,
+						     PMBUS_CMD_BYTE_SIZE, regulator_data->data,
+						     regulator_data->mask, regulator_data->size);
 
 				if (i2c_error) {
 					LOG_WRN("Regulator %#x init retried on cmd %#x "
@@ -259,13 +333,11 @@ uint32_t RegulatorInit(PcbType board_type)
 						regulator_config->address, regulator_data->cmd,
 						i2c_error);
 
-					/* First, try a bus recovery */
 					I2CRecoverBus(PMBUS_MST_ID);
 					/* Retry once */
-					i2c_error =
-						I2CRMWV(PMBUS_MST_ID, regulator_data->cmd,
-							PMBUS_CMD_BYTE_SIZE, regulator_data->data,
-							regulator_data->mask, regulator_data->size);
+					i2c_error = i2c_rmwv(regulator_config->address, regulator_data->cmd,
+							     PMBUS_CMD_BYTE_SIZE, regulator_data->data,
+							     regulator_data->mask, regulator_data->size);
 					if (i2c_error) {
 						LOG_ERR("Regulator init failed on cmd %#x "
 							"with error %#x",
