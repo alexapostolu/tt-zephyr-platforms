@@ -27,18 +27,6 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Create version helper script
-        run: |
-          cat << 'EOF' > scripts/get_version.sh
-          #!/bin/bash
-          file="$1"
-          major=$(grep "VERSION_MAJOR" "$file" | cut -d'=' -f2 | tr -d ' ')
-          minor=$(grep "VERSION_MINOR" "$file" | cut -d'=' -f2 | tr -d ' ')
-          patch=$(grep "PATCHLEVEL" "$file" | cut -d'=' -f2 | tr -d ' ')
-          echo "$major.$minor.$patch"
-          EOF
-          chmod +x scripts/get_version.sh
-
       - name: Create update branch
         id: branch
         run: |
@@ -52,15 +40,6 @@ jobs:
         run: |
           chmod +x scripts/update_versions.sh
           ./scripts/update_versions.sh
-          
-          # Get the new versions for PR description
-          new_main_version=$(scripts/get_version.sh VERSION)
-          new_smc_version=$(scripts/get_version.sh app/smc/VERSION)
-          new_dmc_version=$(scripts/get_version.sh app/dmc/VERSION)
-          
-          echo "new_main_version=$new_main_version" >> $GITHUB_OUTPUT
-          echo "new_smc_version=$new_smc_version" >> $GITHUB_OUTPUT
-          echo "new_dmc_version=$new_dmc_version" >> $GITHUB_OUTPUT
 
       - name: Push changes
         run: |
@@ -72,9 +51,9 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ steps.branch.outputs.branch_name }}
           base: ${{ github.event.inputs.target_branch || 'main' }}
-          title: "chore: update firmware versions"
+          title: "update firmware versions"
           body: |
-            Updated main firmware version in `VERSION`
+            Updated main firmware version
           labels: |
             automated
             version-update
