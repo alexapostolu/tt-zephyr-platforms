@@ -1,0 +1,82 @@
+name: Update Firmware Versions
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_branch:
+        required: false
+        default: 'main'
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-versions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Create version helper script
+        run: |
+          cat << 'EOF' > scripts/get_version.sh
+          #!/bin/bash
+          file="$1"
+          major=$(grep "VERSION_MAJOR" "$file" | cut -d'=' -f2 | tr -d ' ')
+          minor=$(grep "VERSION_MINOR" "$file" | cut -d'=' -f2 | tr -d ' ')
+          patch=$(grep "PATCHLEVEL" "$file" | cut -d'=' -f2 | tr -d ' ')
+          echo "$major.$minor.$patch"
+          EOF
+          chmod +x scripts/get_version.sh
+
+      - name: Create update branch
+        id: branch
+        run: |
+          timestamp=$(date +%Y%m%d-%H%M%S)
+          branch_name="update-firmware-versions-$timestamp"
+          git checkout -b "$branch_name"
+          echo "branch_name=$branch_name" >> $GITHUB_OUTPUT
+
+      - name: Update firmware versions
+        id: update
+        run: |
+          chmod +x scripts/update_versions.sh
+          ./scripts/update_versions.sh
+          
+          # Get the new versions for PR description
+          new_main_version=$(scripts/get_version.sh VERSION)
+          new_smc_version=$(scripts/get_version.sh app/smc/VERSION)
+          new_dmc_version=$(scripts/get_version.sh app/dmc/VERSION)
+          
+          echo "new_main_version=$new_main_version" >> $GITHUB_OUTPUT
+          echo "new_smc_version=$new_smc_version" >> $GITHUB_OUTPUT
+          echo "new_dmc_version=$new_dmc_version" >> $GITHUB_OUTPUT
+
+      - name: Push changes
+        run: |
+          git push origin ${{ steps.branch.outputs.branch_name }}
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ steps.branch.outputs.branch_name }}
+          base: ${{ github.event.inputs.target_branch || 'main' }}
+          title: "chore: update firmware versions"
+          body: |
+            Updated main firmware version in `VERSION`
+          labels: |
+            automated
+            version-update
+          reviewers: |
+            alexapostolu
